@@ -1,0 +1,36 @@
+{% extends "librus/base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8 col-lg-8 mt-5 mx-auto">
+            <h1 class="text-center mt-2">Prace klasowe</h1>
+            <h5 class="text-center mt-3 mb-3">Liczba prac klasowych w tym miesiącu:</h5>
+            <h2 class="text-center liczba_spr">{{ liczba_spr }}</h2>
+            <p class="text-center">Czas do najbliższej pracy kalsowej: <span class="do_testu">{{ do_testu }}</span></p>
+        </div>
+    </div>
+    {% for praca_klasowa in object_list %}
+        <div class="row">
+            <div class="col-md-8 col-lg-8 mx-auto">
+                <div class="card mt-3 mb-3 mx-auto" style="width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ praca_klasowa.przedmiot }} - {{ praca_klasowa.rodzaj }}</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ praca_klasowa.rodzaj|capfirst }}</h6>
+                        <p class="card-text">
+                            <hr>
+                            <span class="text-muted">Przedmiot:</span> {{ praca_klasowa.przedmiot }}
+                            <hr>
+                            <span class="text-muted">Opis:</span> {{ praca_klasowa.opis }}
+                            <hr>
+                            <span class="text-muted">Data:</span> {{ praca_klasowa.data }}
+                            <hr>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

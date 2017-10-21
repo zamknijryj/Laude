@@ -1,0 +1,36 @@
+{% extends "librus/base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8 col-lg-8 mt-5 mx-auto">
+            <h1 class="text-center mt-2">Sprawdziany</h1>
+            <h5 class="text-center mt-3 mb-3">Liczba sprawdzianów w tym miesiącu:</h5>
+            <h2 class="text-center liczba_spr">{{ liczba_spr }}</h2>
+            <p class="text-center">Czas do najbliższego sprawdzian: <span class="do_testu">{{ do_testu }}</span></p>
+        </div>
+    </div>
+    {% for spr in object_list %}
+        <div class="row">
+            <div class="col-md-8 col-lg-8 mx-auto">
+                <div class="card mt-3 mb-3 mx-auto" style="width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ spr.przedmiot }} - {{ spr.rodzaj }}</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ spr.rodzaj|capfirst }}</h6>
+                        <p class="card-text">
+                            <hr>
+                            <span class="text-muted">Przedmiot:</span> {{ spr.przedmiot }}
+                            <hr>
+                            <span class="text-muted">Opis:</span> {{ spr.opis }}
+                            <hr>
+                            <span class="text-muted">Data:</span> {{ spr.data }}
+                            <hr>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
