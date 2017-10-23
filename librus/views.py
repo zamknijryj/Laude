@@ -1,12 +1,10 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, ListView
 from .forms import LibrusForm
-# from .models import Oceny
-from account.models import Profile, Sprawdzian, PracaKlasowa
+from account.models import Sprawdzian, PracaKlasowa
 from .librus import LibrusOceny
 
 from datetime import date, datetime
@@ -45,6 +43,7 @@ def aktualizacja(request):
                     nauczyciel=spr['Nauczyciel'],
                     rodzaj=spr['Rodzaj'],
                     przedmiot=spr['Przedmiot'],
+                    przedmiotTest=spr['Przedmiot'],
                     opis=spr['Opis'],
                     data_dodania=spr['Data dodania']
                 )
@@ -141,6 +140,18 @@ class LibrusPraceKlasowe(ListView):
     template_name = 'librus/prace_klasowe.html'
     model = PracaKlasowa
 
+    def get_context_data(self, **kwargs):
+
+        this_day = date.today()
+        pierwsza_praca = PracaKlasowa.objects.first().data
+
+        context = super(LibrusPraceKlasowe, self).get_context_data(**kwargs)
+        context['liczba_prac'] = PracaKlasowa.objects.all().count()
+        context['section'] = 'praca_klasowa'
+        context['do_pracy'] = pierwsza_praca - this_day
+
+        return context
+
 
 class ChartData(APIView):
     authentication_classes = []
@@ -167,11 +178,7 @@ class ChartData(APIView):
 
 
 def custom_404(request):
-    return HttpResponse('WITAM')
-
-
-class Custom500Error(TemplateView):
-    template_name = 'error/500.html'
+    return render(request, '404.html', status=404)
 
 
 def custom_500(request):

@@ -25,6 +25,7 @@ class LibrusOceny():
         self.full_links = []
         self.full_spr = []
         self.prace = []
+        self.wiadomosciText = []
 
     def connectToLibrus(self, username, password):
 
@@ -58,6 +59,7 @@ class LibrusOceny():
         self.getLuckyNumber()
         self.sprawdziany()
         self.prace_klasowe()
+        self.wiadomosci()
 
     def getUserName(self):
         page3 = self.browser.open(
@@ -208,18 +210,6 @@ class LibrusOceny():
         # print(full_links)
         opisy = []
         te = []
-        for link in self.full_links[:2]:
-            page3 = self.browser.open(link)
-            p = self.browser.get_current_page()
-            tabelka = p.find(
-                'table', class_='decorated small center').find('tbody')
-            tab_text = tabelka.text
-            # Clean the input data by splitting by row and removing blanks
-            clean = [i.strip() for i in tab_text.split("\n") if i]
-
-            # Assume the data is in pairs and group them in key,pair by using index
-            # and index+1 in [0,2,4,6...]
-            d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
 
         for link in self.full_links:
             page3 = self.browser.open(link)
@@ -239,12 +229,48 @@ class LibrusOceny():
                 d.update({'Przedmiot': 'Język polski'})
             self.full_spr.append(d)
 
+    def wiadomosci(self):
+        page3 = self.browser.open(
+            "https://synergia.librus.pl/wiadomosci")
+        p = self.browser.get_current_page()
+        tabela = p.find('table', class_='decorated stretch').find(
+            'tbody').findAll('td')
+
+        linki_do_wiado = []
+        for td in tabela:
+            x = td.findAll('a')
+            for y in x:
+                linki_do_wiado.append(y['href'])
+
+        linki_do_wiado = list(filter(
+            lambda a: a != 'javascript:void(0); return false;', linki_do_wiado))
+
+        base = 'https://synergia.librus.pl'
+        wiadomosci_linki = []
+        for link in linki_do_wiado:
+            plen_link = base + link
+            wiadomosci_linki.append(plen_link)
+
+        # otwieranie linkow z wiadomosciami
+        x = []
+        y = []
+        for link in wiadomosci_linki:
+            page3 = self.browser.open(link)
+            p = self.browser.get_current_page()
+            wiadomosc = p.find('div', class_='container-message-content')
+            y.append(wiadomosc.text)
+
+        try:
+            y.remove(' ')
+        except:
+            pass
+        self.wiadomosciText = y
+
     def konfiguracjaOcen(self, oceny):
-        import sys
-        if IndexError:
+        try:
+            del oceny[0]
+        except IndexError:
             raise Exception("BŁĄD")
-            # sys.exit()
-        del oceny[0]
 
         oceny.remove('0')
         oceny.remove('')
@@ -258,9 +284,3 @@ class LibrusOceny():
         srednia = wartos_ocen / liczba_ocen
 
         return srednia
-
-# v = LibrusOceny()
-# v.connectToLibrus('5306500', 'Codename2')
-
-
-# print(v.prace)

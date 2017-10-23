@@ -17,13 +17,10 @@
     <div class="navbar-collapse collapse dual-nav">
         <ul class="navbar-nav">
             {% if user.is_authenticated %}
-            <li class="nav-item {% if section == 'home' %}active{% endif %}">
-                <a class="nav-link pl-0 hvr-underline-from-center" href="{% url 'home' %}">Home <span class="sr-only">Home</span></a>
-            </li>
             <li class="nav-item {% if section == 'sprawdziany' %}active{% endif %}">
                 <a class="nav-link hvr-underline-from-center" href="{% url 'terminarz' %}">Sprawdziany</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if section == 'praca_klasowa' %}active{% endif %}">
                 <a class="nav-link hvr-underline-from-center" href="{% url 'prace-klasowe' %}">Prace klasowe</a>
             </li>
             {% endif %}

@@ -20,12 +20,28 @@ class Profile(models.Model):
 
 
 class Sprawdzian(models.Model):
+
+    PRZEDMIOTY = (
+        ('Język polski', 'Język polski'),
+        ('Matematyka', 'Matematyka'),
+        ('Historia', 'Historia'),
+        ('Chemia', 'Chemia'),
+        ('Biologia', 'Biologia'),
+        ('Geografia', 'Geografia'),
+        ('Fizyka', 'Fizyka'),
+        ('Język angielski', 'Język angielski'),
+        ('Język niemiecki', 'Język niemiecki'),
+        ('WOS', 'WOS'),
+    )
+
     user = models.ForeignKey(User)
     data = models.DateField(null=True)
     nr_lekcji = models.CharField(max_length=30)
     nauczyciel = models.CharField(max_length=30)
     rodzaj = models.CharField(max_length=30)
     przedmiot = models.CharField(max_length=30)
+    przedmiotTest = models.CharField(
+        max_length=30, choices=PRZEDMIOTY, default='Język polski')
     opis = models.CharField(max_length=100)
     data_dodania = models.CharField(max_length=30)
 

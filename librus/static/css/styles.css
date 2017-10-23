@@ -64,3 +64,7 @@
 .error500Title {
   font-size: 120px;
   font-family: 'Ubuntu', sans-serif; }
+
+.error500Info {
+  font-size: 50px;
+  font-family: 'Ubuntu', sans-serif; }
