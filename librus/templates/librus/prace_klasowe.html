@@ -7,7 +7,7 @@
             <h1 class="text-center mt-2">Prace klasowe</h1>
             <h5 class="text-center mt-3 mb-3">Liczba prac klasowych w tym miesiącu:</h5>
             <h2 class="text-center liczba_spr">{{ liczba_prac }}</h2>
-            <p class="text-center">Czas do najbliższej pracy kalsowej: <span class="do_testu">{{ do_pracy }}</span></p>
+            <p class="text-center">{{ do_pracy }}</p>
         </div>
     </div>
     {% for praca_klasowa in object_list %}

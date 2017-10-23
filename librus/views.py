@@ -43,7 +43,6 @@ def aktualizacja(request):
                     nauczyciel=spr['Nauczyciel'],
                     rodzaj=spr['Rodzaj'],
                     przedmiot=spr['Przedmiot'],
-                    przedmiotTest=spr['Przedmiot'],
                     opis=spr['Opis'],
                     data_dodania=spr['Data dodania']
                 )
@@ -55,6 +54,8 @@ def aktualizacja(request):
                     pass
                 else:
                     sprawdzian.delete()
+
+            # PRACE KLASOWE
 
             prace_kl = lib.prace
             PracaKlasowa.objects.filter(user=request.user).delete()
@@ -121,9 +122,15 @@ class LibrusSprawdziany(ListView):
         context['liczba_spr'] = Sprawdzian.objects.filter(
             user=self.request.user).count()
         this_day = date.today()
-        first_test = Sprawdzian.objects.first().data
+        try:
+            first_test = Sprawdzian.objects.filter(user=self.request.user).first().data
+        except AttributeError:
+            pass
 
-        context['do_testu'] = first_test - this_day
+        try:
+            context['do_testu'] = "Do najbliższego sprawdzainu zostało: {}".format(first_test - this_day)
+        except:
+            context['do_testu'] = 'BRAK SPRAWDZIANÓW'
         context['section'] = 'sprawdziany'
         context['prace_list'] = PracaKlasowa.objects.filter(
             user=self.request.user)
@@ -143,14 +150,25 @@ class LibrusPraceKlasowe(ListView):
     def get_context_data(self, **kwargs):
 
         this_day = date.today()
-        pierwsza_praca = PracaKlasowa.objects.first().data
+        try:
+            pierwsza_praca = PracaKlasowa.objects.filter(user=self.request.user).first().data
+        except AttributeError:
+            pass
 
         context = super(LibrusPraceKlasowe, self).get_context_data(**kwargs)
-        context['liczba_prac'] = PracaKlasowa.objects.all().count()
+        context['liczba_prac'] = PracaKlasowa.objects.filter(user=self.request.user).count()
         context['section'] = 'praca_klasowa'
-        context['do_pracy'] = pierwsza_praca - this_day
+        try:
+            context['do_pracy'] = "Do najbliższej pracy klasowej zostało: {}".format(pierwsza_praca - this_day)
+        except:
+            context['do_pracy'] = 'BRAK PRAC KLASOWYCH'
 
         return context
+
+    def get_queryset(self):
+        object_list = PracaKlasowa.objects.filter(user=self.request.user)
+
+        return object_list
 
 
 class ChartData(APIView):
