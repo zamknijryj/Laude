@@ -77,7 +77,7 @@
             <p class='data_numerka'>{{ request.user.profile.data_numerka }}</p>
             <span class='text-center
                     {% if user.profile.szczesliwy_numerek == None %}text-danger{% else %}numerek{% endif %}'>{% if user.profile.szczesliwy_numerek == None %}
-                <b>Zaktualizuj dane, aby zobaczyć wynik.</b>{% else %}asdas{% endif %}</span>
+                <b>Zaktualizuj dane, aby zobaczyć wynik.</b>{% else %}{{ user.profile.szczesliwy_numerek }}{% endif %}</span>
             <br>
             <a href="{% url 'aktualizacja' %}" class="btn btn-primary mt-3 mb-5">Zaktualizuj dane</a>
         </div>
