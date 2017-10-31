@@ -7,7 +7,6 @@ import datetime
 
 
 class LibrusOceny():
-
     def __init__(self):
         self.browser = browser = mechanicalsoup.StatefulBrowser(
             soup_config={'features': 'lxml'},
@@ -20,7 +19,6 @@ class LibrusOceny():
         self.oceny_skon = []
         self.numerek = 0
         self.numerek_dzien = ''
-        self.full_name = ''
         self.klasa = ''
         self.full_links = []
         self.full_spr = []
@@ -55,30 +53,38 @@ class LibrusOceny():
         self.konfiguracjaOcen(self.oceny2)
         self.sredniaArytmetyczna(self.oceny2)
         self.ocenkiDoWyswietlenia()
-        self.getUserName()
         self.getLuckyNumber()
         self.sprawdziany()
         self.prace_klasowe()
         self.wiadomosci()
 
     def getUserName(self):
-        page3 = self.browser.open(
-            "https://synergia.librus.pl/uczen_index")
-        p = self.browser.get_current_page()
-        full_name = p.find('div', id='user-section').find('b').text
-        full_name = full_name.replace(' (uczeń  )', '')
-        self.full_name = full_name.replace('\n', '')
+        info_page = self.browser.open('https://synergia.librus.pl/informacja')
+        response = self.browser.get_current_page()
+        table = response.find('table', class_='decorated big center form').find('tbody')
+        line_imie = table.find('tr', class_='line1').find('td')
 
-        # pobieranie klasy ucznia
+        return line_imie.text
 
+    def numerUcznia(self):
+        info_page = self.browser.open('https://synergia.librus.pl/informacja')
+        response = self.browser.get_current_page()
+        table = response.find('table', class_='decorated big center form').find('tbody')
+
+        all_lines1 = table.findAll('tr', class_='line1')
+        numrek_line = all_lines1[1].find('td')
+        numerek = ''.join(numrek_line.text.split())
+
+        return numerek
+
+    def klasaUcznia(self):
         page4 = self.browser.open(
             "https://synergia.librus.pl/informacja")
         p = self.browser.get_current_page()
         klasa = p.find('tr', class_='line0').find('td').text
-        klasa = klasa.replace('\r', '')
-        klasa = [e for e in klasa.replace(
-            '\n', ' ').split(' ') if e != '']
-        self.klasa = ' '.join(klasa)
+        klasa = ' '.join((klasa.split()))
+
+        return klasa
 
     def ocenkiDoWyswietlenia(self):
         for ocena in self.oceny:
@@ -183,7 +189,7 @@ class LibrusOceny():
         p = self.browser.get_current_page()
         kalendarz = p.find('table', class_='kalendarz').findAll(
             'td', class_='center')
-        sprawdziany = []
+
         x = []
         for spr in kalendarz:
 
@@ -196,7 +202,6 @@ class LibrusOceny():
             for y in sprawdzian:
                 x.append(y['onclick'])
 
-        # print(x)
         linki2 = []
         base = 'https://synergia.librus.pl'
 
@@ -206,10 +211,6 @@ class LibrusOceny():
             linki2.append(cut)
             pelen_link = base + cut
             self.full_links.append(pelen_link)
-
-        # print(full_links)
-        opisy = []
-        te = []
 
         for link in self.full_links:
             page3 = self.browser.open(link)
@@ -271,10 +272,16 @@ class LibrusOceny():
             del oceny[0]
         except IndexError:
             raise Exception("BŁĄD")
-
-        oceny.remove('0')
-        oceny.remove('')
-        self.oceny2 = list(filter(lambda a: a != 'np' and a != 'T', oceny))
+        try:
+            oceny.remove('0')
+            oceny.remove('')
+            oceny.remove('-')
+            oceny.remove('+')
+            oceny.remove('bz')
+        except:
+            pass
+        # show all without np , T, bz , = , -
+        self.oceny2 = list(filter(lambda a: a != 'np' and a != 'T' and a != 'bz' and a != '+' and a != '-', oceny))
         self.oceny2 = list(map(float, self.oceny2))
 
     def sredniaArytmetyczna(self, oceny):

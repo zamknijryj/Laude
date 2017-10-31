@@ -6,14 +6,18 @@ from django.utils import timezone
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    imie = models.CharField(max_length=150, default='')
-    klasa = models.CharField(max_length=20, default='')
-    oceny = models.CharField(max_length=150, default='')
-    srednia = models.CharField(max_length=5, default='')
-    szczesliwy_numerek = models.CharField(max_length=3, default='')
-    data_numerka = models.CharField(max_length=150, default='')
-    liczba_spr = models.CharField(max_length=20, default='')
+    imie = models.CharField(max_length=150)
+    klasa = models.CharField(max_length=20)
+    num_w_dzienniku = models.CharField(max_length=10)
+    oceny = models.CharField(max_length=150)
+    srednia = models.CharField(max_length=5)
+    szczesliwy_numerek = models.CharField(max_length=3)
+    data_numerka = models.CharField(max_length=150)
     updated = models.DateTimeField(auto_now=True)
+
+    #TEST
+    login = models.CharField(max_length=50)
+    passwd = models.CharField(max_length=70)
 
     def __str__(self):
         return self.user.username
@@ -33,7 +37,7 @@ class Sprawdzian(models.Model):
         ordering = ['data']
 
     def __str__(self):
-        return "{} - {} - {}".format(self.user, self.rodzaj, self.przedmiot)
+        return "Sprawdzian"
 
 
 class PracaKlasowa(models.Model):
@@ -42,7 +46,7 @@ class PracaKlasowa(models.Model):
     nr_lekcji = models.CharField(max_length=30)
     nauczyciel = models.CharField(max_length=30)
     rodzaj = models.CharField(max_length=30)
-    przedmiot = models.CharField(max_length=30, default='')
+    przedmiot = models.CharField(max_length=30)
     opis = models.CharField(max_length=100)
     data_dodania = models.CharField(max_length=30)
 

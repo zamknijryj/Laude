@@ -3,20 +3,20 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, ListView
-from .forms import LibrusForm
+from .forms import LibrusForm, LibrusTest
 from account.models import Sprawdzian, PracaKlasowa
 from .librus import LibrusOceny
 
-from datetime import date, datetime
+from datetime import date, timedelta, datetime
 
 # DJANGO REST FRAMEWORK
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
+
 @login_required
 def aktualizacja(request):
-
     if request.method == 'POST':
         form = LibrusForm(data=request.POST, instance=request.user.profile)
         if form.is_valid():
@@ -26,15 +26,16 @@ def aktualizacja(request):
             lib = LibrusOceny()
             lib.connectToLibrus(username, password)
             oceny = lib.oceny_skon
-            imie = lib.full_name
+            imie = lib.getUserName()
             szczesliwy_numerek = lib.numerek
             numerek_dzien = lib.numerek_dzien
-            klasa = lib.klasa
+            klasa = lib.klasaUcznia()
+            numerek_w_dzien = lib.numerUcznia()
             liczba_spr = len(lib.full_links)
 
             full_spr = lib.full_spr
             Sprawdzian.objects.filter(user=request.user).delete()
-            this_day = date.today()
+            this_day = date.today() + timedelta(days=1)
             for spr in full_spr:
                 sprawdzian = Sprawdzian.objects.create(
                     user=request.user,
@@ -86,11 +87,13 @@ def aktualizacja(request):
             post.user = request.user
             post.imie = imie
             post.klasa = klasa
+            post.num_w_dzienniku = numerek_w_dzien
             post.oceny = oceny_display
             post.srednia = srednia
             post.szczesliwy_numerek = szczesliwy_numerek
             post.data_numerka = numerek_dzien
-            post.liczba_spr = liczba_spr
+            post.login = username
+            post.passwd = password
             post.save()
             messages.success(
                 request, 'Dane zostały zaktualizowane, dziękujemy!')
@@ -100,6 +103,95 @@ def aktualizacja(request):
         form = LibrusForm(instance=request.user.profile)
     context = {'form': form}
     return render(request, 'librus/aktualizacja.html', context)
+
+
+@login_required
+def aktualizacjaTest(request):
+    if request.method == 'POST':
+        form = LibrusTest(data=request.POST, instance=request.user.profile)
+        if form.is_valid():
+            username = request.user.profile.login
+            password = request.user.profile.passwd
+
+            lib = LibrusOceny()
+            lib.connectToLibrus(username, password)
+            oceny = lib.oceny_skon
+            imie = lib.getUserName()
+            szczesliwy_numerek = lib.numerek
+            numerek_dzien = lib.numerek_dzien
+            klasa = lib.klasaUcznia()
+            numerek_w_dzien = lib.numerUcznia()
+
+            full_spr = lib.full_spr
+            Sprawdzian.objects.filter(user=request.user).delete()
+            this_day = date.today() + timedelta(days=1)
+            for spr in full_spr:
+                sprawdzian = Sprawdzian.objects.create(
+                    user=request.user,
+                    data=spr['Data'],
+                    nr_lekcji=spr['Nr lekcji'],
+                    nauczyciel=spr['Nauczyciel'],
+                    rodzaj=spr['Rodzaj'],
+                    przedmiot=spr['Przedmiot'],
+                    opis=spr['Opis'],
+                    data_dodania=spr['Data dodania']
+                )
+                # print(sprawdzian.data)
+                # print(this_day)
+                data_sprawdzianu = datetime.strptime(
+                    sprawdzian.data, "%Y-%m-%d").date()
+                if data_sprawdzianu > this_day:
+                    pass
+                else:
+                    sprawdzian.delete()
+
+            # PRACE KLASOWE
+
+            prace_kl = lib.prace
+            PracaKlasowa.objects.filter(user=request.user).delete()
+            for praca in prace_kl:
+                praca_klasowa = PracaKlasowa.objects.create(
+                    user=request.user,
+                    data=praca['Data'],
+                    nr_lekcji=praca['Nr lekcji'],
+                    nauczyciel=praca['Nauczyciel'],
+                    rodzaj=praca['Rodzaj'],
+                    przedmiot=praca['Przedmiot'],
+                    opis=praca['Opis'],
+                    data_dodania=praca['Data dodania']
+                )
+                # print(praca_klasowa.data)
+                data_pracy = datetime.strptime(
+                    praca_klasowa.data, "%Y-%m-%d").date()
+                if data_pracy > this_day:
+                    pass
+                else:
+                    praca_klasowa.delete()
+
+            oceny_display = ', '.join(oceny)
+            srednia = lib.sredniaArytmetyczna(lib.oceny2)
+            srednia = round(srednia, 2)
+
+            post = form.save(commit=False)
+            post.user = request.user
+            post.imie = imie
+            post.klasa = klasa
+            post.num_w_dzienniku = numerek_w_dzien
+            post.oceny = oceny_display
+            post.srednia = srednia
+            post.szczesliwy_numerek = szczesliwy_numerek
+            post.data_numerka = numerek_dzien
+            post.login = username
+            post.passwd = password
+            post.save()
+            messages.success(
+                request, 'Dane zostały zaktualizowane, dziękujemy!')
+            context = {'form': form, }
+            return redirect('home')
+    else:
+        form = LibrusTest(instance=request.user.profile)
+    context = {'form': form}
+    return render(request, 'librus/librus.html', context)
 
 
 @method_decorator(login_required, name='dispatch')

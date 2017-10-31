@@ -68,3 +68,20 @@
 .error500Info {
   font-size: 50px;
   font-family: 'Ubuntu', sans-serif; }
+
+.linki {
+  color: #fff !important; }
+
+.aktualizacja_info {
+  font-size: 21px;
+  font-family: 'Ubuntu', sans-serif; }
+
+.help-block {
+  margin-top: 10px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  position: relative;
+  padding: .50rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: .25rem; }
