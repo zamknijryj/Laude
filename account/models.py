@@ -11,7 +11,7 @@ class Profile(models.Model):
     num_w_dzienniku = models.CharField(max_length=10)
     oceny = models.CharField(max_length=150)
     srednia = models.CharField(max_length=5)
-    szczesliwy_numerek = models.CharField(max_length=3)
+    szczesliwy_numerek = models.PositiveIntegerField(null=True)
     data_numerka = models.CharField(max_length=150)
     updated = models.DateTimeField(auto_now=True)
 

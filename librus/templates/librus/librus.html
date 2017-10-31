@@ -75,7 +75,9 @@
     <div class="row mt-5">
         <div class="col-md-6 col-lg-6 text-center">
             <p class='data_numerka'>{{ request.user.profile.data_numerka }}</p>
-            <span class='text-center numerek'>{{ request.user.profile.szczesliwy_numerek }}</span>
+            <span class='text-center
+                    {% if user.profile.szczesliwy_numerek == None %}text-danger{% else %}numerek{% endif %}'>{% if user.profile.szczesliwy_numerek == None %}
+                <b>Zaktualizuj dane, aby zobaczyć wynik.</b>{% else %}asdas{% endif %}</span>
             <br>
             <a href="{% url 'aktualizacja' %}" class="btn btn-primary mt-3 mb-5">Zaktualizuj dane</a>
         </div>
@@ -94,8 +96,11 @@
             <form action="." method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button class="bttn-unite bttn-sm bttn-primary bttn-no-outline" {% if request.user.profile.login != '' %}type="submit" {% else %} type="button"{% endif %} {% if request.user.profile.login == '' %}data-toggle="modal"
-                   data-target="#autoModal"{% endif %}>Automatyczna aktualizacja</button>
+                <button class="bttn-unite bttn-sm bttn-primary bttn-no-outline"
+                        {% if request.user.profile.login != '' %}type="submit" {% else %} type="button"{% endif %}
+                        {% if request.user.profile.login == '' %}data-toggle="modal"
+                        data-target="#autoModal"{% endif %}>Automatyczna aktualizacja
+                </button>
             </form>
             <!-- Modal -->
             <div class="modal fade" id="autoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -109,7 +114,8 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Przed korzystaniem z korzystaniem z  automatycznych aktualizacji upewnij się, że <b>zaktualizowałeś swoje dane ręcznie</b>.
+                            <p>Przed korzystaniem z korzystaniem z automatycznych aktualizacji upewnij się, że <b>zaktualizowałeś swoje
+                                dane ręcznie</b>.
                                 <a href="{% url 'aktualizacja' %}">Zaktualizuj dane.</a></p>
                         </div>
                         <div class="modal-footer">

@@ -123,6 +123,11 @@ class LibrusOceny():
         self.numerek = p.find(
             "div", class_="szczesliwy-numerek").find("span").text
 
+        try:
+            self.numerek = int(self.numerek)
+        except:
+            pass
+
     def prace_klasowe(self):
         page3 = self.browser.open(
             "https://synergia.librus.pl/terminarz")

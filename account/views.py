@@ -25,9 +25,7 @@ def register(request):
                                              imie=info,
                                              oceny=info,
                                              srednia=info,
-                                             data_numerka=info,
-                                             szczesliwy_numerek=info
-                                             )
+                                             data_numerka=info)
             nazwa = user_form.cleaned_data['username']
             haslo = user_form.cleaned_data['password']
 
