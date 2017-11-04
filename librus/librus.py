@@ -228,11 +228,11 @@ class LibrusOceny():
             # Assume the data is in pairs and group them in key,pair by using index
             # and index+1 in [0,2,4,6...]
             d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
-            if 'Przedmiot' in d:
-                pass
-
-            else:
+            if d['Nauczyciel'] == 'Szczygieł Agnieszka':
+                d.update({'Przedmiot': 'Geografia'})
+            if d['Nauczyciel'] == 'Hajduk Aleksandra':
                 d.update({'Przedmiot': 'Język polski'})
+
             self.full_spr.append(d)
 
     def wiadomosci(self):
@@ -296,3 +296,4 @@ class LibrusOceny():
         srednia = wartos_ocen / liczba_ocen
 
         return srednia
+

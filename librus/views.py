@@ -10,9 +10,8 @@ from .librus import LibrusOceny
 from datetime import date, timedelta, datetime
 
 # DJANGO REST FRAMEWORK
-from rest_framework.views import APIView
+from rest_framework import generics, views
 from rest_framework.response import Response
-
 
 
 @login_required
@@ -106,7 +105,7 @@ def aktualizacja(request):
 
 
 @login_required
-def aktualizacjaTest(request):
+def aktualizacjaAutomatyczna(request):
     if request.method == 'POST':
         form = LibrusTest(data=request.POST, instance=request.user.profile)
         if form.is_valid():
@@ -261,30 +260,6 @@ class LibrusPraceKlasowe(ListView):
         object_list = PracaKlasowa.objects.filter(user=self.request.user)
 
         return object_list
-
-
-class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, format=None):
-        current_user = auth.get_user(request)  # get current user
-        oceny = current_user.profile.oceny
-        labels = ['0', "1", "2", "3", "4", "5", "6"]
-        zero = oceny.count('0')
-        jeden = oceny.count('1')
-        dwa = oceny.count('2')
-        trzy = oceny.count('3')
-        cztery = oceny.count('4')
-        piec = oceny.count('5')
-        szesc = oceny.count('6')
-        oceny_data = [zero, jeden, dwa, trzy, cztery, piec, szesc]
-        data = {
-            'labels': labels,
-            'default': oceny_data,
-            'max': max(oceny_data) + 1
-        }
-        return Response(data)
 
 
 def custom_404(request):

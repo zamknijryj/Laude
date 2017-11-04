@@ -15,7 +15,7 @@ class Profile(models.Model):
     data_numerka = models.CharField(max_length=150)
     updated = models.DateTimeField(auto_now=True)
 
-    #TEST
+    # TEST
     login = models.CharField(max_length=50)
     passwd = models.CharField(max_length=70)
 
