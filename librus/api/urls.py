@@ -5,7 +5,8 @@ from .views import (
     UserAPIData,
     ChartData,
     AktualizacjaAPI,
-    UserLoginAPI
+    UserLoginAPI,
+    UserCreateAPI
 )
 
 urlpatterns = [
@@ -14,5 +15,6 @@ urlpatterns = [
     url(r'^user/data/$', UserAPIData.as_view()),
     url(r'^aktualizacja/$', AktualizacjaAPI.as_view()),
     url(r'^chart/data/$', ChartData.as_view()),
-    url(r'^user/login/$', UserLoginAPI.as_view())
+    url(r'^user/login/$', UserLoginAPI.as_view()),
+    url(r'^user/register/$', UserCreateAPI.as_view())
 ]

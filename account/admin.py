@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Profile, Sprawdzian, PracaKlasowa
+from .models import (
+    Profile,
+    Sprawdzian,
+    PracaKlasowa,
+    SprawdzianZaliczony
+)
 
 
 class ProfileAdmin(admin.ModelAdmin):
@@ -23,3 +28,4 @@ class PracaKlasowaAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Sprawdzian, SprawdzianAdmin)
 admin.site.register(PracaKlasowa, PracaKlasowaAdmin)
+admin.site.register(SprawdzianZaliczony)

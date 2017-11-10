@@ -1,19 +1,27 @@
 from django.contrib import auth
+from django.contrib.auth import authenticate, login
 from rest_framework import generics, views
 from rest_framework.response import Response
+
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from .serializers import (
     SprawdzianListSerializer,
     PracaKlasowaListSerializer,
     UserAPISerializer,
     AktualizacjaSerializer,
-    UserLoginSerializer
+    UserLoginSerializer,
+    UserCreateSerializer
 )
 from account.models import (
     Sprawdzian,
     PracaKlasowa,
     Profile
 )
+
+from django.contrib.auth.models import User
 
 
 class SprawdzianAPIData(generics.ListAPIView):
@@ -48,16 +56,27 @@ class AktualizacjaAPI(generics.ListCreateAPIView):
 
 
 class UserLoginAPI(views.APIView):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
     serializer_class = UserLoginSerializer
 
     def post(self, request, *args, **kwargs):
-        data = request.data # request.POST
+        data = request.data  # request.POST
         serializer = UserLoginSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             new_data = serializer.data
+            user = authenticate(username=new_data['username'], password=new_data['password'])
+            login(request, user)
             return Response(new_data, status=HTTP_200_OK)
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        new_data = {
+            'xd': 10
+        }
+        return Response(new_data)
 
+
+class UserCreateAPI(generics.CreateAPIView):
+    serializer_class = UserCreateSerializer
+    queryset = User.objects.all()
 
 
 class ChartData(views.APIView):

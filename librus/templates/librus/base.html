@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/hover.css' %}">
     <link rel="stylesheet" href="{% static 'css/bttn.min.css' %}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-expand-md bg-success justify-content-between">
@@ -24,6 +25,9 @@
                 <li class="nav-item {% if section == 'praca_klasowa' %}active{% endif %}">
                     <a class="nav-link linki hvr-underline-from-center" href="{% url 'prace-klasowe' %}">Prace
                         klasowe</a>
+                </li>
+                <li class="nav-item {% if section == 'oceny' %}active{% endif %}">
+                    <a class="nav-link linki hvr-underline-from-center" href="{% url 'oceny' %}">Oceny</a>
                 </li>
             {% endif %}
         </ul>

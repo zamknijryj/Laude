@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
+from django.contrib.auth import get_user_model
 from librus.librus import LibrusOceny
 from librus.models import Oceny
 from account.models import (
@@ -8,15 +9,43 @@ from account.models import (
     Profile
 )
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 from django.db.models import Q
 
-class UserLoginSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(required=False, allow_blank=True)
+# User = get_user_model()
+
+class UserCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
             'username',
+            'email',
             'password'
+        ]
+
+        def create(self, validated_data):
+            username = validated_data['username']
+            email = validated_data['email']
+            password = validated_data['password']
+
+            user_obj = User(
+                username=username,
+                email=email
+            )
+
+            user_obj.set_password(password)
+            user_obj.save()
+            return validated_data
+
+class UserLoginSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(required=False, allow_blank=True)
+    status = serializers.CharField(allow_blank=True, read_only=True)
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'password',
+            'status'
         ]
 
     def validate(self, data):
@@ -33,12 +62,14 @@ class UserLoginSerializer(serializers.ModelSerializer):
         if user.exists() and user.count() == 1:
             user_obj = user.first()
         else:
+            
             raise ValidationError("Zła nazwa użytkownika.")
 
         if user_obj:
-            if not user_obj.check_password(password):
-                raise ValidationError("Złe dane")
-
+            if not user_obj.check_password(password):              
+               raise ValidationError("Podano złe dane")
+                
+        data['status'] = "SUPER WORK"
         return data
 
 

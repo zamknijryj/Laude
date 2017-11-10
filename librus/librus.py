@@ -14,6 +14,7 @@ class LibrusOceny():
             #    user_agent='MyBot/0.1: mysite.example.com/bot_info',
         )
 
+        self.base_link = "https://synergia.librus.pl"
         self.oceny = []
         self.oceny2 = []
         self.oceny_skon = []
@@ -37,6 +38,55 @@ class LibrusOceny():
         page = self.browser.get_current_page()
         # print(page.title.text)
         self.getOceny()
+
+    def ocenySprawdzian(self):
+        pageOceny = self.browser.open("https://synergia.librus.pl/przegladaj_oceny/uczen")
+        p = self.browser.get_current_page()
+        oceny = p.findAll("span", style="background-color:#FF0000; ")
+
+        a_atr = []
+        for a in oceny:
+            te = a.find('a')
+            a_atr.append(te)
+
+        linki = []
+        for link in a_atr:
+            linki.append(link['href'])
+
+        ocenyInfoSpr = []
+        for table in linki:
+            page = self.browser.open(self.base_link+table)
+            p = self.browser.get_current_page()
+            table = p.find('table', class_='decorated medium center').find('tbody')
+            ocena = table.find('tr', class_='line1').find('td')
+            clean = [i.strip() for i in table.text.split("\n") if i]
+
+            # Assume the data is in pairs and group them in key,pair by using index
+            # and index+1 in [0,2,4,6...]
+            d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
+            if 'Dodał' in d:
+                del d['Dodał']
+            if 'Widoczność' in d:
+                del d['Widoczność']
+
+            if d['Kategoria'] == 'klasówka':
+                d['Kategoria'] = 'sprawdzian'
+
+            if 'Komentarz' in d:
+                pass
+            else:
+                d.update({'Komentarz': 'Brak'})
+            ocenyInfoSpr.append(d)
+
+        #
+        # ocenySpr = []
+        # for ocena in oceny:
+        #     ocena2 = ocena.text
+        #     ocena2 = ocena2.replace('\n', '')
+        #     # LISTA OCEN
+        #     ocenySpr.append(ocena2)
+
+        return ocenyInfoSpr
 
     def getOceny(self):
         page3 = self.browser.open(
@@ -297,3 +347,7 @@ class LibrusOceny():
 
         return srednia
 
+
+# v = LibrusOceny()
+# v.connectToLibrus("5306500u", "Codename2")
+# print(v.ocenySprawdzian())

@@ -4,14 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, ListView
 from .forms import LibrusForm, LibrusTest
-from account.models import Sprawdzian, PracaKlasowa
+from account.models import (
+    Sprawdzian,
+    PracaKlasowa,
+    SprawdzianZaliczony
+)
 from .librus import LibrusOceny
 
 from datetime import date, timedelta, datetime
-
-# DJANGO REST FRAMEWORK
-from rest_framework import generics, views
-from rest_framework.response import Response
 
 
 @login_required
@@ -167,6 +167,19 @@ def aktualizacjaAutomatyczna(request):
                 else:
                     praca_klasowa.delete()
 
+            sprZal = lib.ocenySprawdzian()
+            SprawdzianZaliczony.objects.filter(user=request.user).delete()
+            for spr in sprZal:
+                sprawdzianZal = SprawdzianZaliczony.objects.create(
+                    user=request.user,
+                    ocena=spr['Ocena'],
+                    kategoria=spr['Kategoria'],
+                    data=spr['Data'],
+                    nauczyciel=spr['Nauczyciel'],
+                    przedmiot=spr['Przedmiot'],
+                    komentarz=spr['Komentarz']
+                )
+
             oceny_display = ', '.join(oceny)
             srednia = lib.sredniaArytmetyczna(lib.oceny2)
             srednia = round(srednia, 2)
@@ -258,6 +271,29 @@ class LibrusPraceKlasowe(ListView):
 
     def get_queryset(self):
         object_list = PracaKlasowa.objects.filter(user=self.request.user)
+
+        return object_list
+
+
+class OcenyList(ListView):
+    template_name = 'librus/oceny.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(OcenyList, self).get_context_data(**kwargs)
+        context['section'] = 'oceny'
+
+        return context
+
+    def get_queryset(self):
+
+        przed = self.request.GET.get('przedmiot')
+        typ = self.request.GET.get('typ')
+        if przed and typ:
+            object_list =SprawdzianZaliczony.objects.filter(user=self.request.user, przedmiot=przed, kategoria=typ)
+        elif przed==przed and typ == 'WSZYSTKIE':
+            object_list =SprawdzianZaliczony.objects.filter(user=self.request.user, przedmiot=przed)
+        else:
+            object_list = SprawdzianZaliczony.objects.filter(user=self.request.user)
 
         return object_list
 
