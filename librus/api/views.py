@@ -78,6 +78,13 @@ class UserCreateAPI(generics.CreateAPIView):
     serializer_class = UserCreateSerializer
     queryset = User.objects.all()
 
+    def get(self, request, *args, **kwargs):
+        data = {
+            "info": "Please log in"
+        }
+
+        return Response(data)
+
 
 class ChartData(views.APIView):
     authentication_classes = []
