@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.db.models import Q
 
+
 # User = get_user_model()
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -19,27 +20,29 @@ class UserCreateSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'username',
-            'email',
             'password'
         ]
 
+        extra_kwargs = {"password":
+                            {"write_only": True}
+                        }
+
         def create(self, validated_data):
             username = validated_data['username']
-            email = validated_data['email']
             password = validated_data['password']
-
             user_obj = User(
-                username=username,
-                email=email
+                username=username
             )
-
             user_obj.set_password(password)
             user_obj.save()
+
             return validated_data
+
 
 class UserLoginSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False, allow_blank=True)
     status = serializers.CharField(allow_blank=True, read_only=True)
+
     class Meta:
         model = User
         fields = [
@@ -62,17 +65,15 @@ class UserLoginSerializer(serializers.ModelSerializer):
         if user.exists() and user.count() == 1:
             user_obj = user.first()
         else:
-            
+
             raise ValidationError("Zła nazwa użytkownika.")
 
         if user_obj:
-            if not user_obj.check_password(password):              
-               raise ValidationError("Podano złe dane")
-                
+            if not user_obj.check_password(password):
+                raise ValidationError("Podano złe dane")
+
         data['status'] = "SUPER WORK"
         return data
-
-
 
 
 class UserDetailSerializer(serializers.ModelSerializer):

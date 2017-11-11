@@ -18,7 +18,7 @@ from .serializers import (
 from account.models import (
     Sprawdzian,
     PracaKlasowa,
-    Profile
+    Profile,
 )
 
 from django.contrib.auth.models import User
@@ -78,12 +78,16 @@ class UserCreateAPI(generics.CreateAPIView):
     serializer_class = UserCreateSerializer
     queryset = User.objects.all()
 
-    def get(self, request, *args, **kwargs):
-        data = {
-            "info": "Please log in"
-        }
-
-        return Response(data)
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        instance.set_password(instance.password)
+        instance.save()
+        info = 'Zaktualizuj dane, aby zobaczyć wynik.'
+        Profile.objects.create(user=instance,
+                               imie=info,
+                               oceny=info,
+                               srednia=info,
+                               data_numerka=info)
 
 
 class ChartData(views.APIView):
