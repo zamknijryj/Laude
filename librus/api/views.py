@@ -3,8 +3,11 @@ from django.contrib.auth import authenticate, login
 from rest_framework import generics, views
 from rest_framework.response import Response
 
+from librus.librus import LibrusOceny
+
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from datetime import date, timedelta, datetime
 
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from .serializers import (
@@ -19,7 +22,7 @@ from account.models import (
     Sprawdzian,
     PracaKlasowa,
     Profile,
-)
+    SprawdzianZaliczony)
 
 from django.contrib.auth.models import User
 
@@ -48,11 +51,88 @@ class UserAPIData(generics.ListAPIView):
         return Profile.objects.filter(user=current_user)
 
 
-class AktualizacjaAPI(generics.ListCreateAPIView):
+class AktualizacjaAPI(views.APIView):
     serializer_class = AktualizacjaSerializer
 
     def get_queryset(self):
         return Profile.objects.filter(user=self.request.user)
+
+    def post(self, request, *args, **kwargs):
+        data = request.data
+
+        lib = LibrusOceny()
+        lib.connectToLibrus(data['username'], data['password'])
+        oceny = lib.oceny_skon
+        imie = lib.getUserName()
+        szczesliwy_numerek = lib.numerek
+        numerek_dzien = lib.numerek_dzien
+        klasa = lib.klasaUcznia()
+        numerek_w_dzien = lib.numerUcznia()
+
+        full_spr = lib.full_spr
+        Sprawdzian.objects.filter(user=request.user).delete()
+        this_day = date.today() + timedelta(days=1)
+        for spr in full_spr:
+            sprawdzian = Sprawdzian.objects.create(
+                user=request.user,
+                data=spr['Data'],
+                nr_lekcji=spr['Nr lekcji'],
+                nauczyciel=spr['Nauczyciel'],
+                rodzaj=spr['Rodzaj'],
+                przedmiot=spr['Przedmiot'],
+                opis=spr['Opis'],
+                data_dodania=spr['Data dodania']
+            )
+            # print(sprawdzian.data)
+            # print(this_day)
+            data_sprawdzianu = datetime.strptime(
+                sprawdzian.data, "%Y-%m-%d").date()
+            if data_sprawdzianu > this_day:
+                pass
+            else:
+                sprawdzian.delete()
+
+            prace_kl = lib.prace
+            PracaKlasowa.objects.filter(user=request.user).delete()
+            for praca in prace_kl:
+                praca_klasowa = PracaKlasowa.objects.create(
+                    user=request.user,
+                    data=praca['Data'],
+                    nr_lekcji=praca['Nr lekcji'],
+                    nauczyciel=praca['Nauczyciel'],
+                    rodzaj=praca['Rodzaj'],
+                    przedmiot=praca['Przedmiot'],
+                    opis=praca['Opis'],
+                    data_dodania=praca['Data dodania']
+                )
+                # print(praca_klasowa.data)
+                data_pracy = datetime.strptime(
+                    praca_klasowa.data, "%Y-%m-%d").date()
+                if data_pracy > this_day:
+                    pass
+                else:
+                    praca_klasowa.delete()
+
+        oceny_display = ', '.join(oceny)
+        srednia = lib.sredniaArytmetyczna(lib.oceny2)
+        srednia = round(srednia, 2)
+
+        Profile.objects.filter(user=request.user).update(
+            imie=imie,
+            klasa=klasa,
+            num_w_dzienniku=numerek_w_dzien,
+            oceny=oceny_display,
+            srednia=srednia,
+            szczesliwy_numerek=szczesliwy_numerek,
+            data_numerka=numerek_dzien,
+            login=data['username'],
+            passwd=data['password']
+        )
+
+        data_response = {
+            "Done": True
+        }
+        return Response(data_response)
 
 
 class UserLoginAPI(views.APIView):

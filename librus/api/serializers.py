@@ -88,15 +88,19 @@ class UserDetailSerializer(serializers.ModelSerializer):
 
 
 class AktualizacjaSerializer(serializers.ModelSerializer):
-    # username = serializers.CharField(required=True)
-    # password = serializers.CharField(required=True)
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(required=True)
 
     class Meta:
         model = Profile
         fields = [
-            'login',
-            'passwd'
+            'imie',
+            'username',
+            'password'
         ]
+
+        read_only_fields = ['imie']
+
 
 
 class UserAPISerializer(serializers.ModelSerializer):
