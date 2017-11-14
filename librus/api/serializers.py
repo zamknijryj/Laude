@@ -75,7 +75,7 @@ class UserLoginSerializer(serializers.ModelSerializer):
             if not user_obj.check_password(password):
                 raise ValidationError("Podano złe dane")
 
-        data['status'] = "SUPER WORK"
+        data['status'] = "Logged in"
         return data
 
 
@@ -87,20 +87,9 @@ class UserDetailSerializer(serializers.ModelSerializer):
         ]
 
 
-class AktualizacjaSerializer(serializers.ModelSerializer):
+class AktualizacjaSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
-
-    class Meta:
-        model = Profile
-        fields = [
-            'imie',
-            'username',
-            'password'
-        ]
-
-        read_only_fields = ['imie']
-
 
 
 class UserAPISerializer(serializers.ModelSerializer):
