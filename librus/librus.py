@@ -1,5 +1,7 @@
 from __future__ import print_function
 import argparse
+
+import itertools
 import mechanicalsoup
 from getpass import getpass
 import re
@@ -63,7 +65,11 @@ class LibrusOceny():
 
             # Assume the data is in pairs and group them in key,pair by using index
             # and index+1 in [0,2,4,6...]
-            d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
+
+            d = dict(itertools.zip_longest(*[iter(clean)] * 2, fillvalue=""))
+
+
+            # d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
             if 'Dodał' in d:
                 del d['Dodał']
             if 'Widoczność' in d:
@@ -77,14 +83,6 @@ class LibrusOceny():
             else:
                 d.update({'Komentarz': 'Brak'})
             ocenyInfoSpr.append(d)
-
-        #
-        # ocenySpr = []
-        # for ocena in oceny:
-        #     ocena2 = ocena.text
-        #     ocena2 = ocena2.replace('\n', '')
-        #     # LISTA OCEN
-        #     ocenySpr.append(ocena2)
 
         return ocenyInfoSpr
 
@@ -346,8 +344,3 @@ class LibrusOceny():
         srednia = wartos_ocen / liczba_ocen
 
         return srednia
-
-
-# v = LibrusOceny()
-# v.connectToLibrus("5306500u", "Codename2")
-# print(v.ocenySprawdzian())

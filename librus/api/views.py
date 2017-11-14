@@ -65,7 +65,8 @@ class UserLoginAPI(views.APIView):
         serializer = UserLoginSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             new_data = serializer.data
-            user = authenticate(username=new_data['username'], password=new_data['password'])
+            user = authenticate(
+                username=new_data['username'], password=new_data['password'])
             login(request, user)
             return Response(new_data, status=HTTP_200_OK)
         new_data = {
