@@ -52,6 +52,8 @@ class UserAPIData(generics.ListAPIView):
 
 
 class AktualizacjaAPI(views.APIView):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+
     serializer_class = AktualizacjaSerializer
 
     def get_queryset(self):
