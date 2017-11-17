@@ -63,7 +63,7 @@ class AktualizacjaAPI(views.APIView):
         data = request.data
 
         lib = LibrusOceny()
-        lib.connectToLibrus(data['username'], data['password'])
+        lib.connectToLibrus(data['librus_user'], data['librus_pswd'])
         oceny = lib.oceny_skon
         imie = lib.getUserName()
         szczesliwy_numerek = lib.numerek
@@ -127,8 +127,8 @@ class AktualizacjaAPI(views.APIView):
             srednia=srednia,
             szczesliwy_numerek=szczesliwy_numerek,
             data_numerka=numerek_dzien,
-            login=data['username'],
-            passwd=data['password']
+            login=data['librus_user'],
+            passwd=data['librus_pswd']
         )
 
         data_response = {

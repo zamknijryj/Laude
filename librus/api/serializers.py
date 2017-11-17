@@ -88,8 +88,8 @@ class UserDetailSerializer(serializers.ModelSerializer):
 
 
 class AktualizacjaSerializer(serializers.Serializer):
-    username = serializers.CharField(required=True)
-    password = serializers.CharField(required=True)
+    librus_user = serializers.CharField(required=True)
+    librus_pswd = serializers.CharField(required=True)
 
 
 class UserAPISerializer(serializers.ModelSerializer):
