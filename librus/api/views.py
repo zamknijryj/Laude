@@ -62,79 +62,89 @@ class AktualizacjaAPI(views.APIView):
     def post(self, request, *args, **kwargs):
         data = request.data
 
-        lib = LibrusOceny()
-        lib.connectToLibrus(data['librus_user'], data['librus_pswd'])
-        oceny = lib.oceny_skon
-        imie = lib.getUserName()
-        szczesliwy_numerek = lib.numerek
-        numerek_dzien = lib.numerek_dzien
-        klasa = lib.klasaUcznia()
-        numerek_w_dzien = lib.numerUcznia()
+        if data['librus_user'] == "fake" and data['librus_pswd'] == 'fakePassword':
 
-        full_spr = lib.full_spr
-        Sprawdzian.objects.filter(user=request.user).delete()
-        this_day = date.today() + timedelta(days=1)
-        for spr in full_spr:
-            sprawdzian = Sprawdzian.objects.create(
-                user=request.user,
-                data=spr['Data'],
-                nr_lekcji=spr['Nr lekcji'],
-                nauczyciel=spr['Nauczyciel'],
-                rodzaj=spr['Rodzaj'],
-                przedmiot=spr['Przedmiot'],
-                opis=spr['Opis'],
-                data_dodania=spr['Data dodania']
-            )
-            # print(sprawdzian.data)
-            # print(this_day)
-            data_sprawdzianu = datetime.strptime(
-                sprawdzian.data, "%Y-%m-%d").date()
-            if data_sprawdzianu > this_day:
-                pass
-            else:
-                sprawdzian.delete()
+            data_response = {
+                "done": True
+            }
 
-            prace_kl = lib.prace
-            PracaKlasowa.objects.filter(user=request.user).delete()
-            for praca in prace_kl:
-                praca_klasowa = PracaKlasowa.objects.create(
+            return Response(data_response)
+
+        else:
+
+            lib = LibrusOceny()
+            lib.connectToLibrus(data['librus_user'], data['librus_pswd'])
+            oceny = lib.oceny_skon
+            imie = lib.getUserName()
+            szczesliwy_numerek = lib.numerek
+            numerek_dzien = lib.numerek_dzien
+            klasa = lib.klasaUcznia()
+            numerek_w_dzien = lib.numerUcznia()
+
+            full_spr = lib.full_spr
+            Sprawdzian.objects.filter(user=request.user).delete()
+            this_day = date.today() + timedelta(days=1)
+            for spr in full_spr:
+                sprawdzian = Sprawdzian.objects.create(
                     user=request.user,
-                    data=praca['Data'],
-                    nr_lekcji=praca['Nr lekcji'],
-                    nauczyciel=praca['Nauczyciel'],
-                    rodzaj=praca['Rodzaj'],
-                    przedmiot=praca['Przedmiot'],
-                    opis=praca['Opis'],
-                    data_dodania=praca['Data dodania']
+                    data=spr['Data'],
+                    nr_lekcji=spr['Nr lekcji'],
+                    nauczyciel=spr['Nauczyciel'],
+                    rodzaj=spr['Rodzaj'],
+                    przedmiot=spr['Przedmiot'],
+                    opis=spr['Opis'],
+                    data_dodania=spr['Data dodania']
                 )
-                # print(praca_klasowa.data)
-                data_pracy = datetime.strptime(
-                    praca_klasowa.data, "%Y-%m-%d").date()
-                if data_pracy > this_day:
+                # print(sprawdzian.data)
+                # print(this_day)
+                data_sprawdzianu = datetime.strptime(
+                    sprawdzian.data, "%Y-%m-%d").date()
+                if data_sprawdzianu > this_day:
                     pass
                 else:
-                    praca_klasowa.delete()
+                    sprawdzian.delete()
 
-        oceny_display = ', '.join(oceny)
-        srednia = lib.sredniaArytmetyczna(lib.oceny2)
-        srednia = round(srednia, 2)
+                prace_kl = lib.prace
+                PracaKlasowa.objects.filter(user=request.user).delete()
+                for praca in prace_kl:
+                    praca_klasowa = PracaKlasowa.objects.create(
+                        user=request.user,
+                        data=praca['Data'],
+                        nr_lekcji=praca['Nr lekcji'],
+                        nauczyciel=praca['Nauczyciel'],
+                        rodzaj=praca['Rodzaj'],
+                        przedmiot=praca['Przedmiot'],
+                        opis=praca['Opis'],
+                        data_dodania=praca['Data dodania']
+                    )
+                    # print(praca_klasowa.data)
+                    data_pracy = datetime.strptime(
+                        praca_klasowa.data, "%Y-%m-%d").date()
+                    if data_pracy > this_day:
+                        pass
+                    else:
+                        praca_klasowa.delete()
 
-        Profile.objects.filter(user=request.user).update(
-            imie=imie,
-            klasa=klasa,
-            num_w_dzienniku=numerek_w_dzien,
-            oceny=oceny_display,
-            srednia=srednia,
-            szczesliwy_numerek=szczesliwy_numerek,
-            data_numerka=numerek_dzien,
-            login=data['librus_user'],
-            passwd=data['librus_pswd']
-        )
+            oceny_display = ', '.join(oceny)
+            srednia = lib.sredniaArytmetyczna(lib.oceny2)
+            srednia = round(srednia, 2)
 
-        data_response = {
-            "Done": True
-        }
-        return Response(data_response)
+            Profile.objects.filter(user=request.user).update(
+                imie=imie,
+                klasa=klasa,
+                num_w_dzienniku=numerek_w_dzien,
+                oceny=oceny_display,
+                srednia=srednia,
+                szczesliwy_numerek=szczesliwy_numerek,
+                data_numerka=numerek_dzien,
+                login=data['librus_user'],
+                passwd=data['librus_pswd']
+            )
+
+            data_response = {
+                "Done": True
+            }
+            return Response(data_response)
 
 
 class UserLoginAPI(views.APIView):

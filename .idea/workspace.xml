@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6b9ecbb-2c0f-43ba-9dbb-b0f2c4ec663f" name="Default" comment="Idea">
+    <list default="true" id="a6b9ecbb-2c0f-43ba-9dbb-b0f2c4ec663f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/librus/api/serializers.py" afterPath="$PROJECT_DIR$/librus/api/serializers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/librus/api/views.py" afterPath="$PROJECT_DIR$/librus/api/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -31,7 +30,7 @@
       <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/librus/api/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
+            <state relative-caret-position="1264">
               <caret line="91" column="15" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="15" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/librus/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="129" column="35" lean-forward="false" selection-start-line="129" selection-start-column="35" selection-end-line="129" selection-end-column="35" />
+            <state relative-caret-position="208">
+              <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -65,7 +64,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="1024">
               <caret line="67" column="57" lean-forward="false" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -451,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1510686682119</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed stuff with API to connect with android app">
+      <created>1510933199098</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1510933199098</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -518,7 +524,8 @@
     <MESSAGE value="Added better converting list to dict" />
     <MESSAGE value="Idea" />
     <MESSAGE value="Removed unuseful code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unuseful code." />
+    <MESSAGE value="Fixed stuff with API to connect with android app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed stuff with API to connect with android app" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -831,7 +838,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="1024">
           <caret line="67" column="57" lean-forward="false" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -839,17 +846,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/librus/api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/librus/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="1264">
           <caret line="91" column="15" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="15" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
@@ -859,11 +858,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/librus/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="129" column="35" lean-forward="false" selection-start-line="129" selection-start-column="35" selection-end-line="129" selection-end-column="35" />
+        <state relative-caret-position="208">
+          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/librus/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
