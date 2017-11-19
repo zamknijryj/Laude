@@ -123,7 +123,7 @@ def aktualizacjaAutomatyczna(request):
 
             full_spr = lib.full_spr
             Sprawdzian.objects.filter(user=request.user).delete()
-            this_day = date.today() + timedelta(days=1)
+            this_day = date.today()
             for spr in full_spr:
                 sprawdzian = Sprawdzian.objects.create(
                     user=request.user,
