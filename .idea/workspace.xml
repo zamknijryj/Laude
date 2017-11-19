@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a6b9ecbb-2c0f-43ba-9dbb-b0f2c4ec663f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/librus/api/serializers.py" afterPath="$PROJECT_DIR$/librus/api/serializers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/librus/api/views.py" afterPath="$PROJECT_DIR$/librus/api/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -30,7 +31,7 @@
       <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/librus/api/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1264">
+            <state relative-caret-position="0">
               <caret line="91" column="15" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="15" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
@@ -42,18 +43,18 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/librus/api/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
+            <state relative-caret-position="0">
               <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/librus/api/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="464">
+              <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -64,7 +65,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1024">
+            <state relative-caret-position="0">
               <caret line="67" column="57" lean-forward="false" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -73,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/librus/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2784">
-              <caret line="187" column="33" lean-forward="false" selection-start-line="187" selection-start-column="33" selection-end-line="187" selection-end-column="33" />
+            <state relative-caret-position="249">
+              <caret line="144" column="39" lean-forward="false" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -135,12 +136,12 @@
         <option value="$PROJECT_DIR$/librus/urls.py" />
         <option value="$PROJECT_DIR$/librus/templates/librus/base.html" />
         <option value="$PROJECT_DIR$/librus/templates/librus/oceny.html" />
-        <option value="$PROJECT_DIR$/librus/views.py" />
         <option value="$PROJECT_DIR$/oceny_librus/settings.py" />
         <option value="$PROJECT_DIR$/librus/librus.py" />
         <option value="$PROJECT_DIR$/librus/api/urls.py" />
         <option value="$PROJECT_DIR$/librus/api/serializers.py" />
         <option value="$PROJECT_DIR$/librus/api/views.py" />
+        <option value="$PROJECT_DIR$/librus/views.py" />
       </list>
     </option>
   </component>
@@ -199,6 +200,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -233,13 +236,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.splitter.proportion" value="0.24755381" />
@@ -457,7 +458,21 @@
       <option name="project" value="LOCAL" />
       <updated>1510933199098</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added fake user for test.">
+      <created>1510998642491</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1510998642491</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fixed stuff with removing test.">
+      <created>1511086291943</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1511086291943</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -525,7 +540,9 @@
     <MESSAGE value="Idea" />
     <MESSAGE value="Removed unuseful code." />
     <MESSAGE value="Fixed stuff with API to connect with android app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed stuff with API to connect with android app" />
+    <MESSAGE value="Added fake user for test." />
+    <MESSAGE value="Fixed stuff with removing test." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed stuff with removing test." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -826,19 +843,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/librus/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2784">
-          <caret line="187" column="33" lean-forward="false" selection-start-line="187" selection-start-column="33" selection-end-line="187" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
+        <state relative-caret-position="0">
           <caret line="67" column="57" lean-forward="false" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -848,7 +855,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/librus/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1264">
+        <state relative-caret-position="0">
           <caret line="91" column="15" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="15" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
@@ -858,8 +865,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/librus/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="464">
+          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -868,9 +875,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/librus/api/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
+        <state relative-caret-position="0">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/librus/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="144" column="39" lean-forward="false" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

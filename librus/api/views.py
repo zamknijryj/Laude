@@ -45,6 +45,7 @@ class PraceKlasoweAPIData(generics.ListAPIView):
 
 class UserAPIData(generics.ListAPIView):
     serializer_class = UserAPISerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         current_user = self.request.user
@@ -53,6 +54,7 @@ class UserAPIData(generics.ListAPIView):
 
 class AktualizacjaAPI(views.APIView):
     authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
     serializer_class = AktualizacjaSerializer
 
