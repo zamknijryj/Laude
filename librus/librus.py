@@ -26,7 +26,6 @@ class LibrusOceny():
         self.full_links = []
         self.full_spr = []
         self.prace = []
-        self.wiadomosciText = []
 
     def connectToLibrus(self, username, password):
 
@@ -51,13 +50,11 @@ class LibrusOceny():
             te = a.find('a')
             a_atr.append(te)
 
-        linki = []
-        for link in a_atr:
-            linki.append(link['href'])
+        linki = [link['href'] for link in a_atr]
 
         ocenyInfoSpr = []
         for table in linki:
-            page = self.browser.open(self.base_link+table)
+            page = self.browser.open(self.base_link + table)
             p = self.browser.get_current_page()
             table = p.find('table', class_='decorated medium center').find('tbody')
             ocena = table.find('tr', class_='line1').find('td')
@@ -67,7 +64,6 @@ class LibrusOceny():
             # and index+1 in [0,2,4,6...]
 
             d = dict(itertools.zip_longest(*[iter(clean)] * 2, fillvalue=""))
-
 
             # d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
             if 'Dodał' in d:
@@ -90,12 +86,9 @@ class LibrusOceny():
         page3 = self.browser.open(
             "https://synergia.librus.pl/przegladaj_oceny/uczen")
         p = self.browser.get_current_page()
-        title = p.find('h2', class_='inside')
-        # print(title.text)
         x = p.findAll('span', class_='grade-box')
-        # print(title.text)
-        for t in x:
-            self.oceny.append(t.text)
+
+        self.oceny = [t.text for t in x]
 
         self.replaceGrades()
         self.konfiguracjaOcen(self.oceny2)
@@ -104,7 +97,6 @@ class LibrusOceny():
         self.getLuckyNumber()
         self.sprawdziany()
         self.prace_klasowe()
-        self.wiadomosci()
 
     def getUserName(self):
         info_page = self.browser.open('https://synergia.librus.pl/informacja')
@@ -273,8 +265,6 @@ class LibrusOceny():
             tab_text = tabelka.text
             clean = [i.strip() for i in tab_text.split("\n") if i]
 
-            # Assume the data is in pairs and group them in key,pair by using index
-            # and index+1 in [0,2,4,6...]
             d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
             if d['Nauczyciel'] == 'Szczygieł Agnieszka':
                 d.update({'Przedmiot': 'Geografia'})
@@ -287,8 +277,7 @@ class LibrusOceny():
         page3 = self.browser.open(
             "https://synergia.librus.pl/wiadomosci")
         p = self.browser.get_current_page()
-        tabela = p.find('table', class_='decorated stretch').find(
-            'tbody').findAll('td')
+        tabela = p.find('table', style='margin: 5px 0px;').find('tbody').findAll('td')
 
         linki_do_wiado = []
         for td in tabela:
@@ -299,26 +288,32 @@ class LibrusOceny():
         linki_do_wiado = list(filter(
             lambda a: a != 'javascript:void(0); return false;', linki_do_wiado))
 
-        base = 'https://synergia.librus.pl'
-        wiadomosci_linki = []
+        wiadomosci_linki_pelne = []
         for link in linki_do_wiado:
-            plen_link = base + link
-            wiadomosci_linki.append(plen_link)
+            pelen = self.base_link + link
+            wiadomosci_linki_pelne.append(pelen)
 
-        # otwieranie linkow z wiadomosciami
-        x = []
-        y = []
-        for link in wiadomosci_linki:
-            page3 = self.browser.open(link)
+        messages = []
+        for message_link in wiadomosci_linki_pelne:
+            message_page = self.browser.open(message_link)
             p = self.browser.get_current_page()
-            wiadomosc = p.find('div', class_='container-message-content')
-            y.append(wiadomosc.text)
+            tabela_main = p.find('div', class_='container-background') \
+                .find('table', class_='stretch container-message')
 
-        try:
-            y.remove(' ')
-        except:
-            pass
-        self.wiadomosciText = y
+            tabela_info = tabela_main.findAll('table', class_='stretch')[2].findAll('td', class_='left')
+
+            info = [i.text for i in tabela_info]
+
+            dict_info = dict(itertools.zip_longest(*[iter(info)] * 2, fillvalue=""))
+
+            message_body = tabela_main.find('div', class_='container-message-content')
+            message = message_body.text
+            dict_info.update({'Widaomośc': message})
+
+            messages.append(dict_info)
+
+        return messages
+
 
     def konfiguracjaOcen(self, oceny):
         try:
@@ -334,8 +329,10 @@ class LibrusOceny():
         except:
             pass
         # show all without np , T, bz , = , -
-        self.oceny2 = list(filter(lambda a: a != 'np' and a != 'T' and a != 'bz' and a != '+' and a != '-', oceny))
+        self.oceny2 = list(
+            filter(lambda a: a != 'np' and a != '0' and a != 'T' and a != 'bz' and a != '+' and a != '-', oceny))
         self.oceny2 = list(map(float, self.oceny2))
+
 
     def sredniaArytmetyczna(self, oceny):
         liczba_ocen = len(oceny)
@@ -344,3 +341,4 @@ class LibrusOceny():
         srednia = wartos_ocen / liczba_ocen
 
         return srednia
+
