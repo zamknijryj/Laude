@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^chart/data/$', ChartData.as_view()),
     url(r'^user/login/$', UserLoginAPI.as_view()),
     url(r'^user/register/$', UserCreateAPI.as_view()),
-    url(r'^wiadomosci/data/$', WiadomosciAPIData.as_view())
+    url(r'^wiadomosci/data/$', WiadomosciListAPIData.as_view()),
+    url(r'^wiadomosci/(?P<pk>[\d]+)/$', WiadomosciDetailAPI.as_view())
 ]

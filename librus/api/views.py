@@ -35,9 +35,18 @@ class PraceKlasoweAPIData(generics.ListAPIView):
         return PracaKlasowa.objects.filter(user=current_user)
 
 
-class WiadomosciAPIData(generics.ListAPIView):
+class WiadomosciListAPIData(generics.ListAPIView):
     serializer_class = WiadomosciListSerializer
 
+    def get_queryset(self):
+        current_user = self.request.user
+
+        return Wiadomosc.objects.filter(user=current_user)
+
+
+class WiadomosciDetailAPI(generics.RetrieveAPIView):
+    serializer_class = WiadomosciListSerializer
+    
     def get_queryset(self):
         current_user = self.request.user
 

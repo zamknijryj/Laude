@@ -16,11 +16,11 @@
 ALLOWED_HOSTS	../oceny_librus/settings.py	/^ALLOWED_HOSTS = ['*']$/;"	kind:variable	line:27
 AUTH_PASSWORD_VALIDATORS	../oceny_librus/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:90
 AccountConfig	../account/apps.py	/^class AccountConfig(AppConfig):$/;"	kind:class	line:4
-AktualizacjaAPI	../librus/api/views.py	/^class AktualizacjaAPI(views.APIView):$/;"	kind:class	line:56
+AktualizacjaAPI	../librus/api/views.py	/^class AktualizacjaAPI(views.APIView):$/;"	kind:class	line:65
 AktualizacjaSerializer	../librus/api/serializers.py	/^class AktualizacjaSerializer(serializers.Serializer):$/;"	kind:class	line:82
 BASE_DIR	../oceny_librus/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
 CRISPY_TEMPLATE_PACK	../oceny_librus/settings.py	/^CRISPY_TEMPLATE_PACK = 'bootstrap4'$/;"	kind:variable	line:133
-ChartData	../librus/api/views.py	/^class ChartData(views.APIView):$/;"	kind:class	line:189
+ChartData	../librus/api/views.py	/^class ChartData(views.APIView):$/;"	kind:class	line:198
 CustomLoginAuthForm	../account/forms.py	/^class CustomLoginAuthForm(AuthenticationForm):$/;"	kind:class	line:8
 DATABASES	../oceny_librus/settings.py	/^DATABASES = {$/;"	kind:variable	line:80
 DEBUG	../oceny_librus/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
@@ -81,18 +81,19 @@ TIME_ZONE	../oceny_librus/settings.py	/^TIME_ZONE = 'Europe\/Warsaw'$/;"	kind:va
 USE_I18N	../oceny_librus/settings.py	/^USE_I18N = True$/;"	kind:variable	line:112
 USE_L10N	../oceny_librus/settings.py	/^USE_L10N = True$/;"	kind:variable	line:114
 USE_TZ	../oceny_librus/settings.py	/^USE_TZ = True$/;"	kind:variable	line:116
-UserAPIData	../librus/api/views.py	/^class UserAPIData(generics.ListAPIView):$/;"	kind:class	line:47
+UserAPIData	../librus/api/views.py	/^class UserAPIData(generics.ListAPIView):$/;"	kind:class	line:56
 UserAPISerializer	../librus/api/serializers.py	/^class UserAPISerializer(serializers.ModelSerializer):$/;"	kind:class	line:87
-UserCreateAPI	../librus/api/views.py	/^class UserCreateAPI(generics.CreateAPIView):$/;"	kind:class	line:173
+UserCreateAPI	../librus/api/views.py	/^class UserCreateAPI(generics.CreateAPIView):$/;"	kind:class	line:182
 UserCreateSerializer	../librus/api/serializers.py	/^class UserCreateSerializer(serializers.ModelSerializer):$/;"	kind:class	line:10
 UserDetailSerializer	../librus/api/serializers.py	/^class UserDetailSerializer(serializers.ModelSerializer):$/;"	kind:class	line:74
-UserLoginAPI	../librus/api/views.py	/^class UserLoginAPI(views.APIView):$/;"	kind:class	line:153
+UserLoginAPI	../librus/api/views.py	/^class UserLoginAPI(views.APIView):$/;"	kind:class	line:162
 UserLoginSerializer	../librus/api/serializers.py	/^class UserLoginSerializer(serializers.ModelSerializer):$/;"	kind:class	line:37
 UserRegistrationForm	../account/forms.py	/^class UserRegistrationForm(forms.ModelForm):$/;"	kind:class	line:17
 WSGI_APPLICATION	../oceny_librus/settings.py	/^WSGI_APPLICATION = 'oceny_librus.wsgi.application'$/;"	kind:variable	line:75
 Wiadomosc	../account/models.py	/^class Wiadomosc(models.Model):$/;"	kind:class	line:60
-WiadomosciAPIData	../librus/api/views.py	/^class WiadomosciAPIData(generics.ListAPIView):$/;"	kind:class	line:38
+WiadomosciDetailAPI	../librus/api/views.py	/^class WiadomosciDetailAPI(generics.RetrieveAPIView):$/;"	kind:class	line:47
 WiadomosciList	../librus/views.py	/^class WiadomosciList(ListView):$/;"	kind:class	line:247
+WiadomosciListAPIData	../librus/api/views.py	/^class WiadomosciListAPIData(generics.ListAPIView):$/;"	kind:class	line:38
 WiadomosciListSerializer	../librus/api/serializers.py	/^class WiadomosciListSerializer(serializers.ModelSerializer):$/;"	kind:class	line:133
 __init__	../librus/librus.py	/^    def __init__(self):$/;"	kind:member	line:12
 __init__.py	../account/__init__.py	1;"	kind:file	line:1
@@ -118,9 +119,9 @@ attrs	../account/forms.py	/^                                   attrs={'placehold
 attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Hasło'}))$/;"	kind:variable	line:23
 attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Nazwa użytkownika'}))$/;"	kind:variable	line:11
 attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Nazwa użytkownika'}))$/;"	kind:variable	line:20
-authentication_classes	../librus/api/views.py	/^    authentication_classes = (SessionAuthentication, BasicAuthentication)$/;"	kind:variable	line:154
-authentication_classes	../librus/api/views.py	/^    authentication_classes = (SessionAuthentication, BasicAuthentication)$/;"	kind:variable	line:57
-authentication_classes	../librus/api/views.py	/^    authentication_classes = []$/;"	kind:variable	line:190
+authentication_classes	../librus/api/views.py	/^    authentication_classes = (SessionAuthentication, BasicAuthentication)$/;"	kind:variable	line:163
+authentication_classes	../librus/api/views.py	/^    authentication_classes = (SessionAuthentication, BasicAuthentication)$/;"	kind:variable	line:66
+authentication_classes	../librus/api/views.py	/^    authentication_classes = []$/;"	kind:variable	line:199
 clean_password2	../account/forms.py	/^    def clean_password2(self):$/;"	kind:member	line:32
 connectToLibrus	../librus/librus.py	/^    def connectToLibrus(self, username, password):$/;"	kind:member	line:30
 create	../librus/api/serializers.py	/^        def create(self, validated_data):$/;"	kind:member	line:23
@@ -167,7 +168,7 @@ fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:
 fields	../librus/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
 forms.py	../account/forms.py	1;"	kind:file	line:1
 forms.py	../librus/forms.py	1;"	kind:file	line:1
-get	../librus/api/views.py	/^    def get(self, request, format=None):$/;"	kind:member	line:193
+get	../librus/api/views.py	/^    def get(self, request, format=None):$/;"	kind:member	line:202
 getLuckyNumber	../librus/librus.py	/^    def getLuckyNumber(self):$/;"	kind:member	line:154
 getOceny	../librus/librus.py	/^    def getOceny(self):$/;"	kind:member	line:85
 getUserName	../librus/librus.py	/^    def getUserName(self):$/;"	kind:member	line:101
@@ -178,8 +179,9 @@ get_context_data	../librus/views.py	/^    def get_context_data(self, **kwargs):$
 get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:25
 get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:33
 get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:41
-get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:51
-get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:62
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:50
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:60
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:71
 get_queryset	../librus/views.py	/^    def get_queryset(self):$/;"	kind:member	line:240
 get_queryset	../librus/views.py	/^    def get_queryset(self):$/;"	kind:member	line:260
 get_queryset	../librus/views.py	/^    def get_queryset(self):$/;"	kind:member	line:290
@@ -277,16 +279,16 @@ password	../account/forms.py	/^    password = forms.CharField(label='Hasło',$/;
 password	../account/forms.py	/^    password = forms.CharField(label='Hasło',$/;"	kind:variable	line:21
 password	../librus/forms.py	/^    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}),$/;"	kind:variable	line:8
 password2	../account/forms.py	/^    password2 = forms.CharField(label='Powtórz hasło',$/;"	kind:variable	line:24
-perform_create	../librus/api/views.py	/^    def perform_create(self, serializer):$/;"	kind:member	line:177
-permission_classes	../librus/api/views.py	/^    permission_classes = (IsAuthenticated,)$/;"	kind:variable	line:49
+perform_create	../librus/api/views.py	/^    def perform_create(self, serializer):$/;"	kind:member	line:186
 permission_classes	../librus/api/views.py	/^    permission_classes = (IsAuthenticated,)$/;"	kind:variable	line:58
-permission_classes	../librus/api/views.py	/^    permission_classes = []$/;"	kind:variable	line:191
-post	../librus/api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:158
-post	../librus/api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:65
+permission_classes	../librus/api/views.py	/^    permission_classes = (IsAuthenticated,)$/;"	kind:variable	line:67
+permission_classes	../librus/api/views.py	/^    permission_classes = []$/;"	kind:variable	line:200
+post	../librus/api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:167
+post	../librus/api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:74
 prace_klasowe	../librus/librus.py	/^    def prace_klasowe(self):$/;"	kind:member	line:171
 przedmiot	../account/models.py	/^    przedmiot = models.CharField(max_length=30)$/;"	kind:variable	line:32
 przedmiot	../account/models.py	/^    przedmiot = models.CharField(max_length=30)$/;"	kind:variable	line:49
-queryset	../librus/api/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:175
+queryset	../librus/api/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:184
 register	../account/views.py	/^def register(request):$/;"	kind:function	line:9
 replaceGrades	../librus/librus.py	/^    def replaceGrades(self):$/;"	kind:member	line:138
 rodzaj	../account/models.py	/^    rodzaj = models.CharField(max_length=30)$/;"	kind:variable	line:31
@@ -294,13 +296,14 @@ rodzaj	../account/models.py	/^    rodzaj = models.CharField(max_length=30)$/;"	k
 search_fields	../account/admin.py	/^    search_fields = ['przedmiot', 'opis']$/;"	kind:variable	line:13
 search_fields	../account/admin.py	/^    search_fields = ['przedmiot', 'opis']$/;"	kind:variable	line:19
 search_fields	../account/admin.py	/^    search_fields = ['przedmiot', 'opis']$/;"	kind:variable	line:25
-serializer_class	../librus/api/views.py	/^    serializer_class = AktualizacjaSerializer$/;"	kind:variable	line:60
+serializer_class	../librus/api/views.py	/^    serializer_class = AktualizacjaSerializer$/;"	kind:variable	line:69
 serializer_class	../librus/api/views.py	/^    serializer_class = PracaKlasowaListSerializer$/;"	kind:variable	line:31
 serializer_class	../librus/api/views.py	/^    serializer_class = SprawdzianListSerializer$/;"	kind:variable	line:23
-serializer_class	../librus/api/views.py	/^    serializer_class = UserAPISerializer$/;"	kind:variable	line:48
-serializer_class	../librus/api/views.py	/^    serializer_class = UserCreateSerializer$/;"	kind:variable	line:174
-serializer_class	../librus/api/views.py	/^    serializer_class = UserLoginSerializer$/;"	kind:variable	line:156
+serializer_class	../librus/api/views.py	/^    serializer_class = UserAPISerializer$/;"	kind:variable	line:57
+serializer_class	../librus/api/views.py	/^    serializer_class = UserCreateSerializer$/;"	kind:variable	line:183
+serializer_class	../librus/api/views.py	/^    serializer_class = UserLoginSerializer$/;"	kind:variable	line:165
 serializer_class	../librus/api/views.py	/^    serializer_class = WiadomosciListSerializer$/;"	kind:variable	line:39
+serializer_class	../librus/api/views.py	/^    serializer_class = WiadomosciListSerializer$/;"	kind:variable	line:48
 serializers.py	../librus/api/serializers.py	1;"	kind:file	line:1
 settings.py	../oceny_librus/settings.py	1;"	kind:file	line:1
 sprawdziany	../librus/librus.py	/^    def sprawdziany(self):$/;"	kind:member	line:229

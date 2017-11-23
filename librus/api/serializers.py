@@ -141,5 +141,6 @@ class WiadomosciListSerializer(serializers.ModelSerializer):
             'nadawca',
             'temat',
             'wiadomosc',
-            'data_wyslania'
+            'data_wyslania',
+            'id'
         ]
