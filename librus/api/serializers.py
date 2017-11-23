@@ -1,15 +1,7 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-from django.contrib.auth import get_user_model
-from librus.librus import LibrusOceny
-from librus.models import Oceny
-from account.models import (
-    Sprawdzian,
-    PracaKlasowa,
-    Profile
-)
+from account.models import *
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
 from django.db.models import Q
 
 
@@ -135,4 +127,19 @@ class PracaKlasowaListSerializer(serializers.ModelSerializer):
             'rodzaj',
             'przedmiot',
             'opis'
+        ]
+
+
+class WiadomosciListSerializer(serializers.ModelSerializer):
+
+    user = UserDetailSerializer()
+
+    class Meta:
+        model = Wiadomosc
+        fields = [
+            'user',
+            'nadawca',
+            'temat',
+            'wiadomosc',
+            'data_wyslania'
         ]

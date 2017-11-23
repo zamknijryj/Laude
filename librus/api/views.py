@@ -10,19 +10,11 @@ from rest_framework.permissions import IsAuthenticated
 from datetime import date, timedelta, datetime
 
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from .serializers import (
-    SprawdzianListSerializer,
-    PracaKlasowaListSerializer,
-    UserAPISerializer,
-    AktualizacjaSerializer,
-    UserLoginSerializer,
-    UserCreateSerializer
-)
+from .serializers import *
 from account.models import (
     Sprawdzian,
     PracaKlasowa,
-    Profile,
-    SprawdzianZaliczony)
+    Profile,)
 
 from django.contrib.auth.models import User
 
@@ -41,6 +33,15 @@ class PraceKlasoweAPIData(generics.ListAPIView):
     def get_queryset(self):
         current_user = self.request.user
         return PracaKlasowa.objects.filter(user=current_user)
+
+
+class WiadomosciAPIData(generics.ListAPIView):
+    serializer_class = WiadomosciListSerializer
+
+    def get_queryset(self):
+        current_user = self.request.user
+
+        return Wiadomosc.objects.filter(user=current_user)
 
 
 class UserAPIData(generics.ListAPIView):

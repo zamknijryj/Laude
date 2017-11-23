@@ -1,0 +1,350 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0001_initial.py	../account/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../librus/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_auto_20171101_1646.py	../account/migrations/0002_auto_20171101_1646.py	1;"	kind:file	line:1
+0003_auto_20171101_1656.py	../account/migrations/0003_auto_20171101_1656.py	1;"	kind:file	line:1
+0004_sprawdzianzaliczony.py	../account/migrations/0004_sprawdzianzaliczony.py	1;"	kind:file	line:1
+0005_auto_20171106_2020.py	../account/migrations/0005_auto_20171106_2020.py	1;"	kind:file	line:1
+0006_auto_20171106_2029.py	../account/migrations/0006_auto_20171106_2029.py	1;"	kind:file	line:1
+0007_auto_20171121_2046.py	../account/migrations/0007_auto_20171121_2046.py	1;"	kind:file	line:1
+0008_auto_20171121_2052.py	../account/migrations/0008_auto_20171121_2052.py	1;"	kind:file	line:1
+ALLOWED_HOSTS	../oceny_librus/settings.py	/^ALLOWED_HOSTS = ['*']$/;"	kind:variable	line:27
+AUTH_PASSWORD_VALIDATORS	../oceny_librus/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:90
+AccountConfig	../account/apps.py	/^class AccountConfig(AppConfig):$/;"	kind:class	line:4
+AktualizacjaAPI	../librus/api/views.py	/^class AktualizacjaAPI(views.APIView):$/;"	kind:class	line:56
+AktualizacjaSerializer	../librus/api/serializers.py	/^class AktualizacjaSerializer(serializers.Serializer):$/;"	kind:class	line:82
+BASE_DIR	../oceny_librus/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+CRISPY_TEMPLATE_PACK	../oceny_librus/settings.py	/^CRISPY_TEMPLATE_PACK = 'bootstrap4'$/;"	kind:variable	line:133
+ChartData	../librus/api/views.py	/^class ChartData(views.APIView):$/;"	kind:class	line:189
+CustomLoginAuthForm	../account/forms.py	/^class CustomLoginAuthForm(AuthenticationForm):$/;"	kind:class	line:8
+DATABASES	../oceny_librus/settings.py	/^DATABASES = {$/;"	kind:variable	line:80
+DEBUG	../oceny_librus/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
+INSTALLED_APPS	../oceny_librus/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:31
+LANGUAGE_CODE	../oceny_librus/settings.py	/^LANGUAGE_CODE = 'pl'$/;"	kind:variable	line:108
+LOGIN_REDIRECT_URL	../oceny_librus/settings.py	/^LOGIN_REDIRECT_URL = 'home'$/;"	kind:variable	line:135
+LOGIN_URL	../oceny_librus/settings.py	/^LOGIN_URL = 'login'$/;"	kind:variable	line:136
+LOGOUT_REDIRECT_URL	../oceny_librus/settings.py	/^LOGOUT_REDIRECT_URL = 'login'$/;"	kind:variable	line:137
+LibrusConfig	../librus/apps.py	/^class LibrusConfig(AppConfig):$/;"	kind:class	line:4
+LibrusForm	../librus/forms.py	/^class LibrusForm(forms.ModelForm):$/;"	kind:class	line:5
+LibrusMain	../librus/views.py	/^class LibrusMain(TemplateView):$/;"	kind:class	line:207
+LibrusOceny	../librus/librus.py	/^class LibrusOceny():$/;"	kind:class	line:11
+LibrusPraceKlasowe	../librus/views.py	/^class LibrusPraceKlasowe(ListView):$/;"	kind:class	line:268
+LibrusSprawdziany	../librus/views.py	/^class LibrusSprawdziany(ListView):$/;"	kind:class	line:217
+LibrusTest	../librus/forms.py	/^class LibrusTest(forms.ModelForm):$/;"	kind:class	line:16
+MEDIA_ROOT	../oceny_librus/settings.py	/^MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")$/;"	kind:variable	line:131
+MEDIA_URL	../oceny_librus/settings.py	/^MEDIA_URL = '\/media\/'$/;"	kind:variable	line:130
+MIDDLEWARE	../oceny_librus/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:47
+Meta	../account/forms.py	/^    class Meta:$/;"	kind:class	line:28
+Meta	../account/models.py	/^    class Meta:$/;"	kind:class	line:36
+Meta	../account/models.py	/^    class Meta:$/;"	kind:class	line:53
+Meta	../account/models.py	/^    class Meta:$/;"	kind:class	line:67
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:106
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:11
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:121
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:137
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:41
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:75
+Meta	../librus/api/serializers.py	/^    class Meta:$/;"	kind:class	line:90
+Meta	../librus/forms.py	/^    class Meta:$/;"	kind:class	line:11
+Meta	../librus/forms.py	/^    class Meta:$/;"	kind:class	line:18
+Migration	../account/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../account/migrations/0002_auto_20171101_1646.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../account/migrations/0003_auto_20171101_1656.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../account/migrations/0004_sprawdzianzaliczony.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../account/migrations/0005_auto_20171106_2020.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../account/migrations/0006_auto_20171106_2029.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../account/migrations/0007_auto_20171121_2046.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../account/migrations/0008_auto_20171121_2052.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../librus/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Oceny	../librus/models.py	/^class Oceny(models.Model):$/;"	kind:class	line:4
+PracaKlasowa	../account/models.py	/^class PracaKlasowa(models.Model):$/;"	kind:class	line:43
+PracaKlasowaAdmin	../account/admin.py	/^class PracaKlasowaAdmin(admin.ModelAdmin):$/;"	kind:class	line:22
+PracaKlasowaListSerializer	../librus/api/serializers.py	/^class PracaKlasowaListSerializer(serializers.ModelSerializer):$/;"	kind:class	line:118
+PraceKlasoweAPIData	../librus/api/views.py	/^class PraceKlasoweAPIData(generics.ListAPIView):$/;"	kind:class	line:30
+Profile	../account/models.py	/^class Profile(models.Model):$/;"	kind:class	line:7
+ProfileAdmin	../account/admin.py	/^class ProfileAdmin(admin.ModelAdmin):$/;"	kind:class	line:10
+REST_FRAMEWORK	../oceny_librus/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:118
+ROOT_URLCONF	../oceny_librus/settings.py	/^ROOT_URLCONF = 'oceny_librus.urls'$/;"	kind:variable	line:57
+STATIC_ROOT	../oceny_librus/settings.py	/^STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")$/;"	kind:variable	line:129
+STATIC_URL	../oceny_librus/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:128
+Sprawdzian	../account/models.py	/^class Sprawdzian(models.Model):$/;"	kind:class	line:26
+SprawdzianAPIData	../librus/api/views.py	/^class SprawdzianAPIData(generics.ListAPIView):$/;"	kind:class	line:22
+SprawdzianAdmin	../account/admin.py	/^class SprawdzianAdmin(admin.ModelAdmin):$/;"	kind:class	line:16
+SprawdzianListSerializer	../librus/api/serializers.py	/^class SprawdzianListSerializer(serializers.ModelSerializer):$/;"	kind:class	line:103
+TEMPLATES	../oceny_librus/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:59
+TIME_ZONE	../oceny_librus/settings.py	/^TIME_ZONE = 'Europe\/Warsaw'$/;"	kind:variable	line:110
+USE_I18N	../oceny_librus/settings.py	/^USE_I18N = True$/;"	kind:variable	line:112
+USE_L10N	../oceny_librus/settings.py	/^USE_L10N = True$/;"	kind:variable	line:114
+USE_TZ	../oceny_librus/settings.py	/^USE_TZ = True$/;"	kind:variable	line:116
+UserAPIData	../librus/api/views.py	/^class UserAPIData(generics.ListAPIView):$/;"	kind:class	line:47
+UserAPISerializer	../librus/api/serializers.py	/^class UserAPISerializer(serializers.ModelSerializer):$/;"	kind:class	line:87
+UserCreateAPI	../librus/api/views.py	/^class UserCreateAPI(generics.CreateAPIView):$/;"	kind:class	line:173
+UserCreateSerializer	../librus/api/serializers.py	/^class UserCreateSerializer(serializers.ModelSerializer):$/;"	kind:class	line:10
+UserDetailSerializer	../librus/api/serializers.py	/^class UserDetailSerializer(serializers.ModelSerializer):$/;"	kind:class	line:74
+UserLoginAPI	../librus/api/views.py	/^class UserLoginAPI(views.APIView):$/;"	kind:class	line:153
+UserLoginSerializer	../librus/api/serializers.py	/^class UserLoginSerializer(serializers.ModelSerializer):$/;"	kind:class	line:37
+UserRegistrationForm	../account/forms.py	/^class UserRegistrationForm(forms.ModelForm):$/;"	kind:class	line:17
+WSGI_APPLICATION	../oceny_librus/settings.py	/^WSGI_APPLICATION = 'oceny_librus.wsgi.application'$/;"	kind:variable	line:75
+Wiadomosc	../account/models.py	/^class Wiadomosc(models.Model):$/;"	kind:class	line:60
+WiadomosciAPIData	../librus/api/views.py	/^class WiadomosciAPIData(generics.ListAPIView):$/;"	kind:class	line:38
+WiadomosciList	../librus/views.py	/^class WiadomosciList(ListView):$/;"	kind:class	line:247
+WiadomosciListSerializer	../librus/api/serializers.py	/^class WiadomosciListSerializer(serializers.ModelSerializer):$/;"	kind:class	line:133
+__init__	../librus/librus.py	/^    def __init__(self):$/;"	kind:member	line:12
+__init__.py	../account/__init__.py	1;"	kind:file	line:1
+__init__.py	../account/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../librus/__init__.py	1;"	kind:file	line:1
+__init__.py	../librus/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../oceny_librus/__init__.py	1;"	kind:file	line:1
+__str__	../account/models.py	/^    def __str__(self):$/;"	kind:member	line:22
+__str__	../account/models.py	/^    def __str__(self):$/;"	kind:member	line:39
+__str__	../account/models.py	/^    def __str__(self):$/;"	kind:member	line:56
+__str__	../account/models.py	/^    def __str__(self):$/;"	kind:member	line:70
+__str__	../librus/models.py	/^    def __str__(self):$/;"	kind:member	line:8
+admin.py	../account/admin.py	1;"	kind:file	line:1
+admin.py	../librus/admin.py	1;"	kind:file	line:1
+aktualizacja	../librus/views.py	/^def aktualizacja(request):$/;"	kind:function	line:18
+aktualizacjaAutomatyczna	../librus/views.py	/^def aktualizacjaAutomatyczna(request):$/;"	kind:function	line:108
+application	../oceny_librus/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+application	../passenger_wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:11
+apps.py	../account/apps.py	1;"	kind:file	line:1
+apps.py	../librus/apps.py	1;"	kind:file	line:1
+attrs	../account/forms.py	/^                                    attrs={'placeholder': 'Powtórz hasło'}))$/;"	kind:variable	line:26
+attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Hasło'}))$/;"	kind:variable	line:14
+attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Hasło'}))$/;"	kind:variable	line:23
+attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Nazwa użytkownika'}))$/;"	kind:variable	line:11
+attrs	../account/forms.py	/^                                   attrs={'placeholder': 'Nazwa użytkownika'}))$/;"	kind:variable	line:20
+authentication_classes	../librus/api/views.py	/^    authentication_classes = (SessionAuthentication, BasicAuthentication)$/;"	kind:variable	line:154
+authentication_classes	../librus/api/views.py	/^    authentication_classes = (SessionAuthentication, BasicAuthentication)$/;"	kind:variable	line:57
+authentication_classes	../librus/api/views.py	/^    authentication_classes = []$/;"	kind:variable	line:190
+clean_password2	../account/forms.py	/^    def clean_password2(self):$/;"	kind:member	line:32
+connectToLibrus	../librus/librus.py	/^    def connectToLibrus(self, username, password):$/;"	kind:member	line:30
+create	../librus/api/serializers.py	/^        def create(self, validated_data):$/;"	kind:member	line:23
+custom_404	../librus/views.py	/^def custom_404(request):$/;"	kind:function	line:296
+custom_500	../librus/views.py	/^def custom_500(request):$/;"	kind:function	line:300
+data	../account/models.py	/^    data = models.DateField(null=True)$/;"	kind:variable	line:28
+data	../account/models.py	/^    data = models.DateField(null=True)$/;"	kind:variable	line:45
+data_dodania	../account/models.py	/^    data_dodania = models.CharField(max_length=30)$/;"	kind:variable	line:34
+data_dodania	../account/models.py	/^    data_dodania = models.CharField(max_length=30)$/;"	kind:variable	line:51
+data_numerka	../account/models.py	/^    data_numerka = models.CharField(max_length=150)$/;"	kind:variable	line:15
+data_wyslania	../account/models.py	/^    data_wyslania = models.CharField(max_length=50)$/;"	kind:variable	line:65
+dependencies	../account/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:14
+dependencies	../account/migrations/0002_auto_20171101_1646.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../account/migrations/0003_auto_20171101_1656.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../account/migrations/0004_sprawdzianzaliczony.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../account/migrations/0005_auto_20171106_2020.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../account/migrations/0006_auto_20171106_2029.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../account/migrations/0007_auto_20171121_2046.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../account/migrations/0008_auto_20171121_2052.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../librus/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
+document_root	../oceny_librus/urls.py	/^                          document_root=settings.MEDIA_ROOT)$/;"	kind:variable	line:17
+document_root	../oceny_librus/urls.py	/^                          document_root=settings.STATIC_ROOT)$/;"	kind:variable	line:19
+exclude	../librus/forms.py	/^        exclude = ('oceny', 'test')$/;"	kind:variable	line:13
+exclude	../librus/forms.py	/^        exclude = ['oceny', 'test']$/;"	kind:variable	line:20
+extra_kwargs	../librus/api/serializers.py	/^        extra_kwargs = {"password":$/;"	kind:variable	line:19
+field	../account/migrations/0002_auto_20171101_1646.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_sprawdzian', to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:20
+field	../account/migrations/0003_auto_20171101_1656.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:20
+field	../account/migrations/0005_auto_20171106_2020.py	/^            field=models.CharField(choices=[('sprawdzian', 'sprawdzian'), ('kartkówka', 'kartkówka'), ('odpowiedź ustana', 'odpowiedź ustana')], default='sprawdzian', max_length=50),$/;"	kind:variable	line:18
+field	../account/migrations/0006_auto_20171106_2029.py	/^            field=models.CharField(choices=[('Biologia', 'Biologia'), ('Chemia', 'Chemia'), ('Edukacja dla bezpieczeństwa', 'EDB'), ('Fizyka', 'Fizyka'), ('Historia', 'Historia'), ('Informatyka', 'Informatyka'), ('Język angielski', 'Język angielski'), ('Język niemiecki', 'Język niemiecki'), ('Język francuski', 'Język francuski'), ('Język polski', 'Język polski'), ('Matematyka', 'Matematyka'), ('Podstawy przedsiębiorczości', 'Podstawy przedsiębiorczości'), ('Religia', 'Religia'), ('Wiedza o kulturze', 'WOK'), ('Wiedza o społeczeństwie', 'WOS'), ('Wychowanie fizyczne', 'WF'), ('default', 'Brak')], default='default', max_length=60),$/;"	kind:variable	line:18
+field	../account/migrations/0007_auto_20171121_2046.py	/^            field=models.CharField(choices=[('default', '------------------------------------'), ('Biologia', 'Biologia'), ('Chemia', 'Chemia'), ('Edukacja dla bezpieczeństwa', 'EDB'), ('Fizyka', 'Fizyka'), ('Historia', 'Historia'), ('Informatyka', 'Informatyka'), ('Język angielski', 'Język angielski'), ('Język niemiecki', 'Język niemiecki'), ('Język francuski', 'Język francuski'), ('Język polski', 'Język polski'), ('Matematyka', 'Matematyka'), ('Podstawy przedsiębiorczości', 'Podstawy przedsiębiorczości'), ('Religia', 'Religia'), ('Wiedza o kulturze', 'WOK'), ('Wiedza o społeczeństwie', 'WOS'), ('Wychowanie fizyczne', 'WF')], default='default', max_length=60),$/;"	kind:variable	line:35
+fields	../account/forms.py	/^        fields = ('username',)$/;"	kind:variable	line:30
+fields	../account/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:21
+fields	../account/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:38
+fields	../account/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:55
+fields	../account/migrations/0004_sprawdzianzaliczony.py	/^            fields=[$/;"	kind:variable	line:20
+fields	../account/migrations/0007_auto_20171121_2046.py	/^            fields=[$/;"	kind:variable	line:20
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:108
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:123
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:13
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:139
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:43
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:77
+fields	../librus/api/serializers.py	/^        fields = [$/;"	kind:variable	line:92
+fields	../librus/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+forms.py	../account/forms.py	1;"	kind:file	line:1
+forms.py	../librus/forms.py	1;"	kind:file	line:1
+get	../librus/api/views.py	/^    def get(self, request, format=None):$/;"	kind:member	line:193
+getLuckyNumber	../librus/librus.py	/^    def getLuckyNumber(self):$/;"	kind:member	line:154
+getOceny	../librus/librus.py	/^    def getOceny(self):$/;"	kind:member	line:85
+getUserName	../librus/librus.py	/^    def getUserName(self):$/;"	kind:member	line:101
+get_context_data	../librus/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:210
+get_context_data	../librus/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:221
+get_context_data	../librus/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:251
+get_context_data	../librus/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:272
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:25
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:33
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:41
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:51
+get_queryset	../librus/api/views.py	/^    def get_queryset(self):$/;"	kind:member	line:62
+get_queryset	../librus/views.py	/^    def get_queryset(self):$/;"	kind:member	line:240
+get_queryset	../librus/views.py	/^    def get_queryset(self):$/;"	kind:member	line:260
+get_queryset	../librus/views.py	/^    def get_queryset(self):$/;"	kind:member	line:290
+handler404	../oceny_librus/urls.py	/^handler404 = views.custom_404$/;"	kind:variable	line:21
+handler500	../oceny_librus/urls.py	/^handler500 = views.custom_500$/;"	kind:variable	line:22
+imie	../account/models.py	/^    imie = models.CharField(max_length=150)$/;"	kind:variable	line:9
+initial	../account/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:12
+initial	../librus/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+klasa	../account/models.py	/^    klasa = models.CharField(max_length=20)$/;"	kind:variable	line:10
+klasaUcznia	../librus/librus.py	/^    def klasaUcznia(self):$/;"	kind:member	line:120
+konfiguracjaOcen	../librus/librus.py	/^    def konfiguracjaOcen(self, oceny):$/;"	kind:member	line:318
+kwargs	../account/urls.py	/^        kwargs={"authentication_form": CustomLoginAuthForm}),$/;"	kind:variable	line:13
+label	../librus/forms.py	/^                               label='Hasło')$/;"	kind:variable	line:9
+label	../librus/forms.py	/^                            label='Nazwa użytkownika Librus')$/;"	kind:variable	line:7
+librus.py	../librus/librus.py	1;"	kind:file	line:1
+librus_pswd	../librus/api/serializers.py	/^    librus_pswd = serializers.CharField(required=True)$/;"	kind:variable	line:84
+librus_user	../librus/api/serializers.py	/^    librus_user = serializers.CharField(required=True)$/;"	kind:variable	line:83
+list_display	../account/admin.py	/^    list_display = ['rodzaj', 'user', 'przedmiot', 'nauczyciel', 'data']$/;"	kind:variable	line:17
+list_display	../account/admin.py	/^    list_display = ['rodzaj', 'user', 'przedmiot', 'nauczyciel', 'data']$/;"	kind:variable	line:23
+list_display	../account/admin.py	/^    list_display = ['user', 'imie', 'klasa', 'updated']$/;"	kind:variable	line:11
+list_filter	../account/admin.py	/^    list_filter = ['imie', 'klasa', 'num_w_dzienniku']$/;"	kind:variable	line:12
+list_filter	../account/admin.py	/^    list_filter = ['rodzaj', 'user', 'przedmiot', 'data', 'nauczyciel']$/;"	kind:variable	line:18
+list_filter	../account/admin.py	/^    list_filter = ['rodzaj', 'user', 'przedmiot', 'nauczyciel', 'data']$/;"	kind:variable	line:24
+login	../account/models.py	/^    login = models.CharField(max_length=50)$/;"	kind:variable	line:19
+login	../librus/forms.py	/^    login = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nazwa użytkownika Librus'}),$/;"	kind:variable	line:6
+manage.py	../manage.py	1;"	kind:file	line:1
+model	../account/forms.py	/^        model = User$/;"	kind:variable	line:29
+model	../librus/api/serializers.py	/^        model = PracaKlasowa$/;"	kind:variable	line:122
+model	../librus/api/serializers.py	/^        model = Profile$/;"	kind:variable	line:91
+model	../librus/api/serializers.py	/^        model = Sprawdzian$/;"	kind:variable	line:107
+model	../librus/api/serializers.py	/^        model = User$/;"	kind:variable	line:12
+model	../librus/api/serializers.py	/^        model = User$/;"	kind:variable	line:42
+model	../librus/api/serializers.py	/^        model = User$/;"	kind:variable	line:76
+model	../librus/api/serializers.py	/^        model = Wiadomosc$/;"	kind:variable	line:138
+model	../librus/forms.py	/^        model = Oceny$/;"	kind:variable	line:12
+model	../librus/forms.py	/^        model = Oceny$/;"	kind:variable	line:19
+model	../librus/views.py	/^    model = PracaKlasowa$/;"	kind:variable	line:270
+model	../librus/views.py	/^    model = Sprawdzian$/;"	kind:variable	line:219
+model	../librus/views.py	/^    model = Wiadomosc$/;"	kind:variable	line:249
+model_name	../account/migrations/0002_auto_20171101_1646.py	/^            model_name='sprawdzian',$/;"	kind:variable	line:18
+model_name	../account/migrations/0003_auto_20171101_1656.py	/^            model_name='sprawdzian',$/;"	kind:variable	line:18
+model_name	../account/migrations/0005_auto_20171106_2020.py	/^            model_name='sprawdzianzaliczony',$/;"	kind:variable	line:16
+model_name	../account/migrations/0006_auto_20171106_2029.py	/^            model_name='sprawdzianzaliczony',$/;"	kind:variable	line:16
+model_name	../account/migrations/0007_auto_20171121_2046.py	/^            model_name='sprawdzianzaliczony',$/;"	kind:variable	line:33
+model_name	../account/migrations/0008_auto_20171121_2052.py	/^            model_name='wiadomosc',$/;"	kind:variable	line:16
+models.py	../account/models.py	1;"	kind:file	line:1
+models.py	../librus/models.py	1;"	kind:file	line:1
+nadawca	../account/models.py	/^    nadawca = models.CharField(max_length=100)$/;"	kind:variable	line:62
+name	../account/apps.py	/^    name = 'account'$/;"	kind:variable	line:5
+name	../account/migrations/0001_initial.py	/^            name='PracaKlasowa',$/;"	kind:variable	line:20
+name	../account/migrations/0001_initial.py	/^            name='Profile',$/;"	kind:variable	line:37
+name	../account/migrations/0001_initial.py	/^            name='Sprawdzian',$/;"	kind:variable	line:54
+name	../account/migrations/0002_auto_20171101_1646.py	/^            name='user',$/;"	kind:variable	line:19
+name	../account/migrations/0003_auto_20171101_1656.py	/^            name='user',$/;"	kind:variable	line:19
+name	../account/migrations/0004_sprawdzianzaliczony.py	/^            name='SprawdzianZaliczony',$/;"	kind:variable	line:19
+name	../account/migrations/0005_auto_20171106_2020.py	/^            name='kategoria',$/;"	kind:variable	line:17
+name	../account/migrations/0006_auto_20171106_2029.py	/^            name='przedmiot',$/;"	kind:variable	line:17
+name	../account/migrations/0007_auto_20171121_2046.py	/^            name='Wiadomosc',$/;"	kind:variable	line:19
+name	../account/migrations/0007_auto_20171121_2046.py	/^            name='przedmiot',$/;"	kind:variable	line:34
+name	../librus/apps.py	/^    name = 'librus'$/;"	kind:variable	line:5
+name	../librus/migrations/0001_initial.py	/^            name='Oceny',$/;"	kind:variable	line:17
+nauczyciel	../account/models.py	/^    nauczyciel = models.CharField(max_length=30)$/;"	kind:variable	line:30
+nauczyciel	../account/models.py	/^    nauczyciel = models.CharField(max_length=30)$/;"	kind:variable	line:47
+new_name	../account/migrations/0008_auto_20171121_2052.py	/^            new_name='data_wyslania',$/;"	kind:variable	line:18
+nr_lekcji	../account/models.py	/^    nr_lekcji = models.CharField(max_length=30)$/;"	kind:variable	line:29
+nr_lekcji	../account/models.py	/^    nr_lekcji = models.CharField(max_length=30)$/;"	kind:variable	line:46
+num_w_dzienniku	../account/models.py	/^    num_w_dzienniku = models.CharField(max_length=10)$/;"	kind:variable	line:11
+numerUcznia	../librus/librus.py	/^    def numerUcznia(self):$/;"	kind:member	line:109
+ocenkiDoWyswietlenia	../librus/librus.py	/^    def ocenkiDoWyswietlenia(self):$/;"	kind:member	line:129
+oceny	../account/models.py	/^    oceny = models.CharField(max_length=150)$/;"	kind:variable	line:12
+oceny	../librus/models.py	/^    oceny = models.CharField(max_length=10)$/;"	kind:variable	line:6
+ocenySprawdzian	../librus/librus.py	/^    def ocenySprawdzian(self):$/;"	kind:member	line:43
+old_name	../account/migrations/0008_auto_20171121_2052.py	/^            old_name='data_wyslawana',$/;"	kind:variable	line:17
+operations	../account/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:18
+operations	../account/migrations/0002_auto_20171101_1646.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../account/migrations/0003_auto_20171101_1656.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../account/migrations/0004_sprawdzianzaliczony.py	/^    operations = [$/;"	kind:variable	line:17
+operations	../account/migrations/0005_auto_20171106_2020.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../account/migrations/0006_auto_20171106_2029.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../account/migrations/0007_auto_20171121_2046.py	/^    operations = [$/;"	kind:variable	line:17
+operations	../account/migrations/0008_auto_20171121_2052.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../librus/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
+opis	../account/models.py	/^    opis = models.CharField(max_length=100)$/;"	kind:variable	line:33
+opis	../account/models.py	/^    opis = models.CharField(max_length=100)$/;"	kind:variable	line:50
+options	../account/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:32
+options	../account/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:66
+options	../account/migrations/0004_sprawdzianzaliczony.py	/^            options={$/;"	kind:variable	line:30
+options	../account/migrations/0007_auto_20171121_2046.py	/^            options={$/;"	kind:variable	line:28
+ordering	../account/models.py	/^        ordering = ['data']$/;"	kind:variable	line:37
+ordering	../account/models.py	/^        ordering = ['data']$/;"	kind:variable	line:54
+ordering	../account/models.py	/^        ordering = ['id']$/;"	kind:variable	line:68
+passenger_wsgi.py	../passenger_wsgi.py	1;"	kind:file	line:1
+passwd	../account/models.py	/^    passwd = models.CharField(max_length=70)$/;"	kind:variable	line:20
+password	../account/forms.py	/^    password = forms.CharField(label='Hasło',$/;"	kind:variable	line:12
+password	../account/forms.py	/^    password = forms.CharField(label='Hasło',$/;"	kind:variable	line:21
+password	../librus/forms.py	/^    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}),$/;"	kind:variable	line:8
+password2	../account/forms.py	/^    password2 = forms.CharField(label='Powtórz hasło',$/;"	kind:variable	line:24
+perform_create	../librus/api/views.py	/^    def perform_create(self, serializer):$/;"	kind:member	line:177
+permission_classes	../librus/api/views.py	/^    permission_classes = (IsAuthenticated,)$/;"	kind:variable	line:49
+permission_classes	../librus/api/views.py	/^    permission_classes = (IsAuthenticated,)$/;"	kind:variable	line:58
+permission_classes	../librus/api/views.py	/^    permission_classes = []$/;"	kind:variable	line:191
+post	../librus/api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:158
+post	../librus/api/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:65
+prace_klasowe	../librus/librus.py	/^    def prace_klasowe(self):$/;"	kind:member	line:171
+przedmiot	../account/models.py	/^    przedmiot = models.CharField(max_length=30)$/;"	kind:variable	line:32
+przedmiot	../account/models.py	/^    przedmiot = models.CharField(max_length=30)$/;"	kind:variable	line:49
+queryset	../librus/api/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:175
+register	../account/views.py	/^def register(request):$/;"	kind:function	line:9
+replaceGrades	../librus/librus.py	/^    def replaceGrades(self):$/;"	kind:member	line:138
+rodzaj	../account/models.py	/^    rodzaj = models.CharField(max_length=30)$/;"	kind:variable	line:31
+rodzaj	../account/models.py	/^    rodzaj = models.CharField(max_length=30)$/;"	kind:variable	line:48
+search_fields	../account/admin.py	/^    search_fields = ['przedmiot', 'opis']$/;"	kind:variable	line:13
+search_fields	../account/admin.py	/^    search_fields = ['przedmiot', 'opis']$/;"	kind:variable	line:19
+search_fields	../account/admin.py	/^    search_fields = ['przedmiot', 'opis']$/;"	kind:variable	line:25
+serializer_class	../librus/api/views.py	/^    serializer_class = AktualizacjaSerializer$/;"	kind:variable	line:60
+serializer_class	../librus/api/views.py	/^    serializer_class = PracaKlasowaListSerializer$/;"	kind:variable	line:31
+serializer_class	../librus/api/views.py	/^    serializer_class = SprawdzianListSerializer$/;"	kind:variable	line:23
+serializer_class	../librus/api/views.py	/^    serializer_class = UserAPISerializer$/;"	kind:variable	line:48
+serializer_class	../librus/api/views.py	/^    serializer_class = UserCreateSerializer$/;"	kind:variable	line:174
+serializer_class	../librus/api/views.py	/^    serializer_class = UserLoginSerializer$/;"	kind:variable	line:156
+serializer_class	../librus/api/views.py	/^    serializer_class = WiadomosciListSerializer$/;"	kind:variable	line:39
+serializers.py	../librus/api/serializers.py	1;"	kind:file	line:1
+settings.py	../oceny_librus/settings.py	1;"	kind:file	line:1
+sprawdziany	../librus/librus.py	/^    def sprawdziany(self):$/;"	kind:member	line:229
+srednia	../account/models.py	/^    srednia = models.CharField(max_length=5)$/;"	kind:variable	line:13
+sredniaArytmetyczna	../librus/librus.py	/^    def sredniaArytmetyczna(self, oceny):$/;"	kind:member	line:337
+status	../librus/api/serializers.py	/^    status = serializers.CharField(allow_blank=True, read_only=True)$/;"	kind:variable	line:39
+szczesliwy_numerek	../account/models.py	/^    szczesliwy_numerek = models.PositiveIntegerField(null=True)$/;"	kind:variable	line:14
+temat	../account/models.py	/^    temat = models.CharField(max_length=250)$/;"	kind:variable	line:63
+template_name	../librus/views.py	/^    template_name = 'librus\/librus.html'$/;"	kind:variable	line:208
+template_name	../librus/views.py	/^    template_name = 'librus\/prace_klasowe.html'$/;"	kind:variable	line:269
+template_name	../librus/views.py	/^    template_name = 'librus\/sprawdziany.html'$/;"	kind:variable	line:218
+template_name	../librus/views.py	/^    template_name = 'librus\/wiadomosci.html'$/;"	kind:variable	line:248
+test	../librus/models.py	/^    test = models.CharField(max_length=140)$/;"	kind:variable	line:5
+tests.py	../account/tests.py	1;"	kind:file	line:1
+tests.py	../librus/tests.py	1;"	kind:file	line:1
+updated	../account/models.py	/^    updated = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:16
+urlpatterns	../account/urls.py	/^urlpatterns = [$/;"	kind:variable	line:11
+urlpatterns	../librus/api/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
+urlpatterns	../librus/urls.py	/^urlpatterns = [$/;"	kind:variable	line:10
+urlpatterns	../oceny_librus/urls.py	/^urlpatterns = [$/;"	kind:variable	line:7
+urls.py	../account/urls.py	1;"	kind:file	line:1
+urls.py	../librus/api/urls.py	1;"	kind:file	line:1
+urls.py	../librus/urls.py	1;"	kind:file	line:1
+urls.py	../oceny_librus/urls.py	1;"	kind:file	line:1
+user	../account/models.py	/^    user = models.ForeignKey(User)$/;"	kind:variable	line:27
+user	../account/models.py	/^    user = models.ForeignKey(User)$/;"	kind:variable	line:44
+user	../account/models.py	/^    user = models.ForeignKey(User)$/;"	kind:variable	line:61
+user	../account/models.py	/^    user = models.OneToOneField(settings.AUTH_USER_MODEL)$/;"	kind:variable	line:8
+user	../librus/api/serializers.py	/^    user = UserDetailSerializer()$/;"	kind:variable	line:104
+user	../librus/api/serializers.py	/^    user = UserDetailSerializer()$/;"	kind:variable	line:119
+user	../librus/api/serializers.py	/^    user = UserDetailSerializer()$/;"	kind:variable	line:135
+user	../librus/api/serializers.py	/^    user = UserDetailSerializer()$/;"	kind:variable	line:88
+username	../account/forms.py	/^    username = forms.CharField(label='Nazwa użytkownika',$/;"	kind:variable	line:18
+username	../account/forms.py	/^    username = forms.CharField(label='Nazwa użytkownika',$/;"	kind:variable	line:9
+username	../librus/api/serializers.py	/^    username = serializers.CharField(required=False, allow_blank=True)$/;"	kind:variable	line:38
+validate	../librus/api/serializers.py	/^    def validate(self, data):$/;"	kind:member	line:49
+views.py	../account/views.py	1;"	kind:file	line:1
+views.py	../librus/api/views.py	1;"	kind:file	line:1
+views.py	../librus/views.py	1;"	kind:file	line:1
+wiadomosc	../account/models.py	/^    wiadomosc = models.TextField()$/;"	kind:variable	line:64
+wiadomosci	../librus/librus.py	/^    def wiadomosci(self):$/;"	kind:member	line:276
+widget	../account/forms.py	/^                                widget=forms.PasswordInput($/;"	kind:variable	line:25
+widget	../account/forms.py	/^                               widget=forms.PasswordInput($/;"	kind:variable	line:13
+widget	../account/forms.py	/^                               widget=forms.PasswordInput($/;"	kind:variable	line:22
+widget	../account/forms.py	/^                               widget=forms.TextInput($/;"	kind:variable	line:10
+widget	../account/forms.py	/^                               widget=forms.TextInput($/;"	kind:variable	line:19
+wsgi.py	../oceny_librus/wsgi.py	1;"	kind:file	line:1

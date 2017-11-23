@@ -3,7 +3,7 @@ from .models import (
     Profile,
     Sprawdzian,
     PracaKlasowa,
-    SprawdzianZaliczony
+    Wiadomosc
 )
 
 
@@ -28,4 +28,4 @@ class PracaKlasowaAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Sprawdzian, SprawdzianAdmin)
 admin.site.register(PracaKlasowa, PracaKlasowaAdmin)
-admin.site.register(SprawdzianZaliczony)
+admin.site.register(Wiadomosc)

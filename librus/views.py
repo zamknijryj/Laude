@@ -7,7 +7,7 @@ from .forms import LibrusForm, LibrusTest
 from account.models import (
     Sprawdzian,
     PracaKlasowa,
-    SprawdzianZaliczony
+    Wiadomosc
 )
 from .librus import LibrusOceny
 
@@ -145,7 +145,6 @@ def aktualizacjaAutomatyczna(request):
                     sprawdzian.delete()
 
             # PRACE KLASOWE
-
             prace_kl = lib.prace
             PracaKlasowa.objects.filter(user=request.user).delete()
             for praca in prace_kl:
@@ -167,17 +166,15 @@ def aktualizacjaAutomatyczna(request):
                 else:
                     praca_klasowa.delete()
 
-            sprZal = lib.ocenySprawdzian()
-            SprawdzianZaliczony.objects.filter(user=request.user).delete()
-            for spr in sprZal:
-                sprawdzianZal = SprawdzianZaliczony.objects.create(
+            wiadomosci = lib.wiadomosci()
+            Wiadomosc.objects.filter(user=request.user).delete()
+            for wid in wiadomosci:
+                wiad = Wiadomosc.objects.create(
                     user=request.user,
-                    ocena=spr['Ocena'],
-                    kategoria=spr['Kategoria'],
-                    data=spr['Data'],
-                    nauczyciel=spr['Nauczyciel'],
-                    przedmiot=spr['Przedmiot'],
-                    komentarz=spr['Komentarz']
+                    nadawca=wid['Nadawca'],
+                    temat=wid['Temat'],
+                    wiadomosc=wid['Widaomośc'],
+                    data_wyslania=wid['Wysłano']
                 )
 
             oceny_display = ', '.join(oceny)
@@ -247,6 +244,27 @@ class LibrusSprawdziany(ListView):
 
 
 @method_decorator(login_required, name='dispatch')
+class WiadomosciList(ListView):
+    template_name = 'librus/wiadomosci.html'
+    model = Wiadomosc
+
+    def get_context_data(self, **kwargs):
+
+        context = super(WiadomosciList, self).get_context_data(**kwargs)
+
+        context['section'] = 'wiadomosci'
+        context['liczba_wiad'] = Wiadomosc.objects.count()
+
+        return context
+
+    def get_queryset(self):
+        object_list = Wiadomosc.objects.filter(user=self.request.user)
+
+        return object_list
+
+
+
+@method_decorator(login_required, name='dispatch')
 class LibrusPraceKlasowe(ListView):
     template_name = 'librus/prace_klasowe.html'
     model = PracaKlasowa
@@ -271,29 +289,6 @@ class LibrusPraceKlasowe(ListView):
 
     def get_queryset(self):
         object_list = PracaKlasowa.objects.filter(user=self.request.user)
-
-        return object_list
-
-
-class OcenyList(ListView):
-    template_name = 'librus/oceny.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(OcenyList, self).get_context_data(**kwargs)
-        context['section'] = 'oceny'
-
-        return context
-
-    def get_queryset(self):
-
-        przed = self.request.GET.get('przedmiot')
-        typ = self.request.GET.get('typ')
-        if przed and typ:
-            object_list =SprawdzianZaliczony.objects.filter(user=self.request.user, przedmiot=przed, kategoria=typ)
-        elif przed==przed and typ == 'WSZYSTKIE':
-            object_list =SprawdzianZaliczony.objects.filter(user=self.request.user, przedmiot=przed)
-        else:
-            object_list = SprawdzianZaliczony.objects.filter(user=self.request.user)
 
         return object_list
 

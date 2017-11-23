@@ -56,44 +56,17 @@ class PracaKlasowa(models.Model):
     def __str__(self):
         return "{} - {}".format(self.user, self.rodzaj)
 
-class SprawdzianZaliczony(models.Model):
 
-    KAT = (
-        ('sprawdzian', 'sprawdzian'),
-        ('kartkówka', 'kartkówka'),
-        ('odpowiedź ustana', 'odpowiedź ustana')
-    )
-
-    PRZED = (
-        ('default', '------------------------------------'),
-        ('Biologia', 'Biologia'),
-        ('Chemia', 'Chemia'),
-        ('Edukacja dla bezpieczeństwa', 'EDB'),
-        ('Fizyka', 'Fizyka'),
-        ('Historia', 'Historia'),
-        ('Informatyka', 'Informatyka'),
-        ('Język angielski', 'Język angielski'),
-        ('Język niemiecki', 'Język niemiecki'),
-        ('Język francuski', 'Język francuski'),
-        ('Język polski', 'Język polski'),
-        ('Matematyka', 'Matematyka'),
-        ('Podstawy przedsiębiorczości', 'Podstawy przedsiębiorczości'),
-        ('Religia', 'Religia'),
-        ('Wiedza o kulturze', 'WOK'),
-        ('Wiedza o społeczeństwie', 'WOS'),
-        ('Wychowanie fizyczne', 'WF')
-    )
-
+class Wiadomosc(models.Model):
     user = models.ForeignKey(User)
-    ocena = models.CharField(max_length=5)
-    kategoria = models.CharField(max_length=50, choices=KAT, default='sprawdzian')
-    data = models.CharField(max_length=30)
-    nauczyciel = models.CharField(max_length=60)
-    przedmiot = models.CharField(max_length=60, choices=PRZED, default='default')
-    komentarz = models.CharField(max_length=140)
+    nadawca = models.CharField(max_length=100)
+    temat = models.CharField(max_length=250)
+    wiadomosc = models.TextField()
+    data_wyslania = models.CharField(max_length=50)
 
     class Meta:
         ordering = ['id']
 
     def __str__(self):
-        return "{} - {} - {} - Zaliczony".format(self.user, self.kategoria, self.przedmiot)
+        return "{} - {}".format(self.user, self.temat)
+
