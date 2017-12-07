@@ -22,7 +22,7 @@
                 {% for wiad in object_list %}
                 <tr>
                     <td>{{ wiad.nadawca }}</td>
-                    <td>{{ wiad.temat }}</td>
+                    <td><a href="{% url 'wiadomosc_detail' pk=wiad.pk %}">{{ wiad.temat }}</a></td>
                     <td>{{ wiad.data_wyslania }}</td>
                 </tr>
                 {% endfor %}

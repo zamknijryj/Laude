@@ -85,3 +85,9 @@
   padding: .50rem 1rem;
   margin-bottom: 1rem;
   border-radius: .25rem; }
+
+.wiad {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 25px;
+}

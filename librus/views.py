@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic import TemplateView, ListView
+from django.views import generic
 from .forms import LibrusForm, LibrusTest
 from account.models import (
     Sprawdzian,
@@ -204,7 +204,7 @@ def aktualizacjaAutomatyczna(request):
 
 
 @method_decorator(login_required, name='dispatch')
-class LibrusMain(TemplateView):
+class LibrusMain(generic.TemplateView):
     template_name = 'librus/librus.html'
 
     def get_context_data(self, **kwargs):
@@ -214,7 +214,7 @@ class LibrusMain(TemplateView):
 
 
 @method_decorator(login_required, name='dispatch')
-class LibrusSprawdziany(ListView):
+class LibrusSprawdziany(generic.ListView):
     template_name = 'librus/sprawdziany.html'
     model = Sprawdzian
 
@@ -224,12 +224,14 @@ class LibrusSprawdziany(ListView):
             user=self.request.user).count()
         this_day = date.today()
         try:
-            first_test = Sprawdzian.objects.filter(user=self.request.user).first().data
+            first_test = Sprawdzian.objects.filter(
+                user=self.request.user).first().data
         except AttributeError:
             pass
 
         try:
-            context['do_testu'] = "Do najbliższego sprawdzainu zostało: {}".format(first_test - this_day)
+            context['do_testu'] = "Do najbliższego sprawdzainu zostało: {}".format(
+                first_test - this_day)
         except:
             context['do_testu'] = 'BRAK SPRAWDZIANÓW'
         context['section'] = 'sprawdziany'
@@ -244,7 +246,7 @@ class LibrusSprawdziany(ListView):
 
 
 @method_decorator(login_required, name='dispatch')
-class WiadomosciList(ListView):
+class WiadomosciList(generic.ListView):
     template_name = 'librus/wiadomosci.html'
     model = Wiadomosc
 
@@ -263,9 +265,13 @@ class WiadomosciList(ListView):
         return object_list
 
 
+@method_decorator(login_required, name='dispatch')
+class WidomosciDetail(generic.DetailView):
+    template_name = 'librus/wiadomosc_detail.html'
+    model = Wiadomosc
 
 @method_decorator(login_required, name='dispatch')
-class LibrusPraceKlasowe(ListView):
+class LibrusPraceKlasowe(generic.ListView):
     template_name = 'librus/prace_klasowe.html'
     model = PracaKlasowa
 
@@ -273,15 +279,18 @@ class LibrusPraceKlasowe(ListView):
 
         this_day = date.today()
         try:
-            pierwsza_praca = PracaKlasowa.objects.filter(user=self.request.user).first().data
+            pierwsza_praca = PracaKlasowa.objects.filter(
+                user=self.request.user).first().data
         except AttributeError:
             pass
 
         context = super(LibrusPraceKlasowe, self).get_context_data(**kwargs)
-        context['liczba_prac'] = PracaKlasowa.objects.filter(user=self.request.user).count()
+        context['liczba_prac'] = PracaKlasowa.objects.filter(
+            user=self.request.user).count()
         context['section'] = 'praca_klasowa'
         try:
-            context['do_pracy'] = "Do najbliższej pracy klasowej zostało: {}".format(pierwsza_praca - this_day)
+            context['do_pracy'] = "Do najbliższej pracy klasowej zostało: {}".format(
+                pierwsza_praca - this_day)
         except:
             context['do_pracy'] = 'BRAK PRAC KLASOWYCH'
 

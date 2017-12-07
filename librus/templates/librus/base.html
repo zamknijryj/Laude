@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Laude | Wizualizacja twoich ocen{% endblock %}</title>
+    <title>{% block title %}Liobrus | Wizualizacja twoich ocen{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -27,12 +27,12 @@
                         klasowe</a>
                 </li>
                 <li class="nav-item {% if section == 'wiaodmosci' %}active{% endif %}">
-                    <a class="nav-link linki hvr-underline-from-center" href="{% url 'wiadomosci' %}">oceny</a>
+                    <a class="nav-link linki hvr-underline-from-center" href="{% url 'wiadomosci' %}">Wiadomości</a>
                 </li>
             {% endif %}
         </ul>
     </div>
-    <a href="{% url 'home' %}" class="navbar-brand mr-0">Laude</a>
+    <a href="{% url 'home' %}" class="navbar-brand mr-0">Liobrus</a>
     <div class="navbar-collapse collapse dual-nav">
         <ul class="nav navbar-nav ml-auto">
             {% if user.is_authenticated %}

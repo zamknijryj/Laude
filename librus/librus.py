@@ -266,10 +266,15 @@ class LibrusOceny():
             clean = [i.strip() for i in tab_text.split("\n") if i]
 
             d = {clean[ind]: clean[ind + 1] for ind in range(0, len(clean), 2)}
-            if d['Nauczyciel'] == 'Szczygieł Agnieszka':
-                d.update({'Przedmiot': 'Geografia'})
-            if d['Nauczyciel'] == 'Hajduk Aleksandra':
-                d.update({'Przedmiot': 'Język polski'})
+            try:
+                if d['Nauczyciel'] == 'Szczygieł Agnieszka':
+                    d.update({'Przedmiot': 'Geografia'})
+                if d['Nauczyciel'] == 'Hajduk Aleksandra':
+                    d.update({'Przedmiot': 'Język polski'})
+                if d['Nauczyciel'] == 'Woźniak Małgorzata':
+                    d.update({'Przedmiot': 'Język niemiecki'})
+            except:
+                d.update({'Przedmiot': 'Brak'})
 
             self.full_spr.append(d)
 
@@ -314,6 +319,18 @@ class LibrusOceny():
 
         return messages
 
+    def ocenySrednia(self):
+        pageOceny = self.browser.open("https://synergia.librus.pl/przegladaj_oceny/uczen")
+        p = self.browser.get_current_page()
+        lines0 = p.findAll('tr', class_='line0')
+
+        for line0 in lines0:
+            # wszytkie oceny dla line0
+            td = line0.findAll('span', class_='grade-box')
+
+            for oc in td:
+                if oc is not None:
+                    print(oc.text)
 
     def konfiguracjaOcen(self, oceny):
         try:
@@ -333,7 +350,6 @@ class LibrusOceny():
             filter(lambda a: a != 'np' and a != '0' and a != 'T' and a != 'bz' and a != '+' and a != '-', oceny))
         self.oceny2 = list(map(float, self.oceny2))
 
-
     def sredniaArytmetyczna(self, oceny):
         liczba_ocen = len(oceny)
         wartos_ocen = sum(oceny)
@@ -342,3 +358,6 @@ class LibrusOceny():
 
         return srednia
 
+v = LibrusOceny()
+v.connectToLibrus("5306500u", 'Codename2')
+v.ocenySrednia()
