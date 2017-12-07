@@ -357,7 +357,3 @@ class LibrusOceny():
         srednia = wartos_ocen / liczba_ocen
 
         return srednia
-
-v = LibrusOceny()
-v.connectToLibrus("5306500u", 'Codename2')
-v.ocenySrednia()
